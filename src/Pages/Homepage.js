@@ -10,6 +10,7 @@ import '../Assets/css/style.css'; // Import your custom style.css
 import profilePic from '../Assets/images/Rajvirsinh Dabhi.jpg';
 import project1 from '../Assets/images/Carvistahomepage.png';
 import PortfolioHomepage from '../Assets/images/PortfolioHomepage.png';
+import image from '../Assets/images/image.png';
 
 import Reactjs from '../Assets/images/Reactjs.png'
 import Nodejs from '../Assets/images/Nodejs.png'
@@ -246,7 +247,6 @@ const Homepage = () => {
       {/* //SERVICES */}
 
       {/* WORK */}
-  
 <section id="work" className="full-hight px-lg-5">
   <div className="container gy-4">
     <div className="row p-4">
@@ -256,8 +256,10 @@ const Homepage = () => {
       </div>
     </div>
 
-    {/* CarVista Project */}
+    {/* Monster Gym Project */}
     <div className="row gy-4">
+     
+      {/* CarVista Project */}
       <div className="col-12 col-md-10 col-lg-8 mx-auto mb-5" data-aos="fade-up">
         <div className="card rounded-4 bg-base shadow-effect">
           <div className="img rounded-4">
@@ -280,33 +282,56 @@ const Homepage = () => {
         </div>
       </div>
 
-      
-    </div>
-    {/* Portfolio Intro Project */}
-<div className="col-12 col-md-10 col-lg-8 mx-auto mb-5" data-aos="fade-up" data-aos-delay="300">
-  <div className="card rounded-4 bg-base shadow-effect">
-    <div className="img rounded-4">
-      <img src={PortfolioHomepage} className="rounded-4 w-100" alt="Portfolio Intro Project" />
-    </div>
-    <div className="card-content p-3">
-      <h4>Portfolio Intro – Developer Profile Website</h4>
-      <p className="text-white">
-        Designed and deployed a professional developer introduction website with a sleek UI, responsive design, and dark theme. Showcases key skills, contact info, and resume with animated transitions. Built using React and styled with modern CSS.
-      </p>
-      <a
-        href="https://rajvirintro.vercel.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="custom-link btn btn-brand mt-2"
-      >
-        View Live
-      </a>
-    </div>
-  </div>
-</div>
+      {/* Portfolio Intro Project */}
+      <div className="col-12 col-md-10 col-lg-8 mx-auto mb-5" data-aos="fade-up" data-aos-delay="300">
+        <div className="card rounded-4 bg-base shadow-effect">
+          <div className="img rounded-4">
+            <img src={PortfolioHomepage} className="rounded-4 w-100" alt="Portfolio Intro Project" />
+          </div>
+          <div className="card-content p-3">
+            <h4>Portfolio Intro – Developer Profile Website</h4>
+            <p className="text-white">
+              Designed and deployed a professional developer introduction website with a sleek UI, responsive design, and dark theme. Showcases key skills, contact info, and resume with animated transitions. Built using React and styled with modern CSS.
+            </p>
+            <a
+              href="https://rajvirintro.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="custom-link btn btn-brand mt-2"
+            >
+              View Live
+            </a>
+          </div>
+        </div>
+      </div>
+       <div className="col-12 col-md-10 col-lg-8 mx-auto mb-5" data-aos="fade-up">
+        <div className="card rounded-4 bg-base shadow-effect">
+          <div className="img rounded-4">
+            <img src={image} className="rounded-4 w-100" alt="Monster Gym Project" />
+          </div>
+          <div className="card-content p-3">
+            <h4>Monster Gym – Workout Plans UI</h4>
+            <p className="text-white">
+              Built an engaging front-end UI for a Gym and its workout plans using HTML, CSS, and Bootstrap.
+              Includes interactive carousel, plan cards (abs, legs, chest, arms), and responsive pricing section.
+              Designed during the early phase of my web development journey to learn core UI/UX principles.
+            </p>
+            <a
+              href="https://monster-gym-frontend.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="custom-link btn btn-brand mt-2"
+            >
+              View Live
+            </a>
+          </div>
+        </div>
+      </div>
 
+    </div>
   </div>
 </section>
+
 
 
       {/* //WORK */}

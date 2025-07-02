@@ -245,8 +245,8 @@ img {
 
 .floating-resume-btn {
   position: fixed;
-  bottom: 55px;
-  right: 24px;
+  bottom: 75px;
+  right: 34px;
   background-color: var(--color-base2); /* Dark background */
   color: var(--color-brand); /* Forest green text */
   padding: 12px 20px;

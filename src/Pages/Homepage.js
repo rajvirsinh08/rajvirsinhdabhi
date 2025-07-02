@@ -105,38 +105,48 @@ const Homepage = () => {
       {/* //NAV BAR */}
 
       {/* HOME SECTION */}
-      <section id="home" className="full-hight px-lg-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-10">
-              <h1 className="text-uppercase display-4 fw-bold" data-aos="fade-up">
-                I'm  Rajvirsinh Dabhi, a skilled
-                <span className="text-brand"> Mern Stack developer</span>
-              </h1>
-              <p
-                className="lead mt-2 mb-3 fs-3"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                I'm delighted to have you here. Explore my work and discover the
-                world of innovative solutions I've crafted.
-              </p>
-              <div data-aos="fade-up" data-aos-delay="600">
-  <a href="#work" className="btn btn-brand fw-bold me-4">
-    EXPLORE MY WORK
-  </a>
-  <a href="tel:+919724955379" className="custom-link num me-4">
-    Call: +91 9724955379
-  </a>
-  <a href="rajvirsinhdabhi1@gmail.com" className="custom-link email">
-    Email: rajvrisinhdabhi1@gmail.com
-  </a>
-</div>
+   <section id="home" className="full-hight px-lg-5">
+  <div className="container">
+    <div className="row">
+      <div className="col-lg-10 mx-auto">
 
-            </div>
-          </div>
+        {/* Mobile-only profile picture */}
+        <div className="text-center mb-4 d-lg-none">
+          <img
+            src={profilePic}
+            alt="Rajvirsinh Dabhi"
+            className="rounded-circle"
+            style={{ width: "140px", height: "140px", objectFit: "cover" }}
+          />
         </div>
-      </section>
+
+        <h1 className="text-uppercase display-4 fw-bold" data-aos="fade-up">
+          I'm <span className="text-brand">Rajvirsinh Dabhi</span>, a skilled Mern Stack Developer
+        </h1>
+        <p
+          className="lead mt-2 mb-3 fs-3"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          I'm delighted to have you here. Explore my work and discover the
+          world of innovative solutions I've crafted.
+        </p>
+        <div data-aos="fade-up" data-aos-delay="600">
+          <a href="#work" className="btn btn-brand fw-bold me-4">
+            EXPLORE MY WORK
+          </a>
+          <a href="tel:+919724955379" className="custom-link num me-4">
+            Call: +91 9724955379
+          </a>
+          <a href="mailto:rajvirsinhdabhi1@gmail.com" className="custom-link email">
+            Email: rajvirsinhdabhi1@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
       {/* //HOME SECTION */}
 
       {/* SERVICES */}

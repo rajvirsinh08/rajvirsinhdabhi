@@ -320,3 +320,30 @@ img {
     margin-right: 0 !important;
   }
 }
+@media (max-width: 768px) {
+  #work .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #work .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #work .col-12,
+  #work .col-md-10,
+  #work .col-lg-8 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+
+  #work .card {
+    width: 90%;
+    margin: 0 auto 2rem;
+    border-radius: 1rem !important; /* Maintain rounded design */
+  }
+}

@@ -153,7 +153,7 @@ const Homepage = () => {
     <section id="services" className="full-hight px-lg-5">
   <div className="container">
     <div className="row p-4">
-      <div className="col-md-8" data-aos="fade-up">
+      <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
         <h1>My Skills</h1>
       </div>
     </div>
@@ -246,8 +246,7 @@ const Homepage = () => {
       {/* //SERVICES */}
 
       {/* WORK */}
-     {/* WORK */}
-{/* WORK */}
+  
 <section id="work" className="full-hight px-lg-5">
   <div className="container gy-4">
     <div className="row p-4">
@@ -295,7 +294,7 @@ const Homepage = () => {
         Designed and deployed a professional developer introduction website with a sleek UI, responsive design, and dark theme. Showcases key skills, contact info, and resume with animated transitions. Built using React and styled with modern CSS.
       </p>
       <a
-        href="https://piyushintro.vercel.app/"
+        href="https://rajvirintro.vercel.app/"
         target="_blank"
         rel="noopener noreferrer"
         className="custom-link btn btn-brand mt-2"
@@ -316,7 +315,7 @@ const Homepage = () => {
     <section id="about" className="full-hight px-lg-5">
   <div className="container gy-4">
     <div className="row p-4">
-      <div className="col-md-8" data-aos="fade-up">
+      <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
         <h6>ABOUT</h6>
         <h1>Education</h1>
       </div>
@@ -365,7 +364,7 @@ const Homepage = () => {
 <section id="certifications" className="full-hight px-lg-5">
   <div className="container gy-4">
     <div className="row p-4">
-      <div className="col-md-8" data-aos="fade-up">
+      <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
         <h6>CERTIFICATIONS</h6>
         <h1>My Achievements & Certifications</h1>
       </div>
@@ -375,7 +374,7 @@ const Homepage = () => {
    {/* Certification 2 - Accenture Software Engineering Job Simulation */}
 {/* Certification 2 - Accenture Software Engineering Job Simulation */}
 {/* Certification 2 - Accenture Software Engineering Job Simulation */}
-<div className="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+<div className="col-lg-4  mx-auto text-center" data-aos="fade-up" data-aos-delay="400">
   <div className="p-4 shadow-effect bg-base py-4 rounded-4 text-center">
     <div className="mb-3">
       <i className="las la-certificate fs-2"></i>
@@ -417,9 +416,9 @@ const Homepage = () => {
               <p>Designed By Rajvirsinh Dabhi</p>
             </div>
             <div className="social-icons col-auto">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i className="lab la-linkedin-in"></i></a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i className="lab la-github"></i></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i className="lab la-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/rajvirsinh-dabhi-0b9320253/" target="_blank" rel="noopener noreferrer"><i className="lab la-linkedin-in"></i></a>
+              <a href="https://github.com/rajvirsinh08" target="_blank" rel="noopener noreferrer"><i className="lab la-github"></i></a>
+              <a href="https://www.instagram.com/rajvirsinh__08?igsh=MTVpa3k5dGR0anMxNg==" target="_blank" rel="noopener noreferrer"><i className="lab la-instagram"></i></a>
             </div>
           </div>
         </div>

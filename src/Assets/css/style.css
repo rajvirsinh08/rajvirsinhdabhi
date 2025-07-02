@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap");
+
+/* :root {
+  --color-body: #b6cbce;
+  --color-heading: #eef3db;
+  --color-base:  #2C3539;
+  --color-base2: #080808;
+  --color-brand:#E6E6FA;
+  --color-brand2: #46540f;
+  --sidbar-width: 240px;
+  --font-base: "Kanit";
+} */
+:root {
+  --color-body: #A6B0A8; /* Muted grey-green for main text */
+  --color-heading: #F0F2ED; /* Soft white for headings */
+  --color-base: #262626; /* Dark charcoal for main background */
+  --color-base2: #1A1A1A; /* Even darker charcoal for accents/sidebar */
+  --color-brand: #598565; /* Muted forest green for brand elements */
+  --color-brand2: #3D6B49; /* Darker forest green for secondary branding */
+  --sidbar-width: 240px;
+  --font-base: "Kanit";
+}
+body {
+  background-color: var(--color-base2);
+  color: var(--color-body);
+  font-family: var(--font-base);
+}
+
+.card .img {
+  overflow: hidden;
+}
+
+.card .img img {
+  transition: all 0.5s ease;
+}
+.card:hover .img img {
+  transform: scale(1.1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-body);
+  transition: all 0.4s ease;
+}
+
+a:hover {
+  color: var(--color-brand);
+}
+
+img {
+  width: 100%;
+}
+
+.navbar .nav-link {
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  color: white;
+}
+.navbar .nav-link:hover {
+  color: var(--color-brand);
+}
+
+.skill-card {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered-img-container {
+  height: 156px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered-img-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    min-height: 100vh !important;
+    max-width: var(--sidbar-width) !important;
+    background: rgb(222, 5, 5);
+      /* url("../images/sidebar-img.jpg") !important; */
+    background-size: cover;
+    background-position: center;
+  }
+
+  .navbar-brand img {
+    border: 5px solid var(--color-brand);
+  }
+
+  #content-wrapper {
+    margin-left: var(--sidbar-width);
+  }
+}
+
+.text-brand {
+  color: var(--color-brand);
+}
+
+.full-hight {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.355);
+}
+
+.bg-base {
+  background-color: var(--color-base);
+}
+
+.shadow-effect {
+  transition: all 0.5s ease;
+}
+
+.shadow-effect:hover {
+  box-shadow: -6px 6px 0 0 var(--color-brand);
+}
+
+.navbar .nav-link.active {
+  color: var(--color-brand);
+}
+
+.iconbox {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background-color: var(--color-brand);
+  color: var(--color-base);
+}
+
+/* BTN */
+.btn {
+  padding: 12px 28px;
+  font-weight: 700 !important;
+}
+
+.stars {
+  color: var(--color-brand2);
+}
+
+.btn-brand {
+  border: 2px solid var(--color-brand);
+  background-color: var(--color-brand);
+  border: 2px solid var(--color-brand2);
+}
+
+.text-brand {
+  color: var(--color-brand);
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+  background-color: var(--color-brand2);
+  border: 2px solid var(--color-brand2);
+  color: var(--color-base);
+}
+/* //BTN */
+
+.custom-link {
+  font-weight: 700;
+  position: relative;
+}
+
+.custom-link::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: var(--color-brand);
+  position: absolute;
+  left: 0;
+  top: 110%;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease;
+}
+.custom-link:hover::after {
+  width: 100%;
+}
+
+.navbar {
+  background-color:  var(--color-base);;
+}
+
+#contact .form-control {
+  background-color: var(--color-base);
+  color: var(--color-body);
+  border-color: var(--color-base);
+}
+
+#contact .form-control:focus {
+  border-color: var(--color-brand);
+  box-shadow: none;
+}
+
+#contact .form-control::placeholder {
+  color: var(--color-body);
+}
+
+#contact input.form-control {
+  height: 42px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background-color: var(--color-base);
+  color: var(--color-brand);
+  font-size: 24px;
+}
+.profilepic {
+  width: 180px;
+  height: 180px;
+}
+
+
+.floating-resume-btn {
+  position: fixed;
+  bottom: 55px;
+  right: 24px;
+  background-color: var(--color-base2); /* Dark background */
+  color: var(--color-brand); /* Forest green text */
+  padding: 12px 20px;
+  border: 1px solid var(--color-brand); /* Border in brand color */
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(89, 133, 101, 0.2); /* Green-ish shadow */
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.floating-resume-btn:hover {
+  background-color: var(--color-brand); /* Brand green on hover */
+  color: var(--color-heading); /* Light text on hover */
+  box-shadow: 0 8px 18px rgba(89, 133, 101, 0.3);
+}
+
+@media (max-width: 422px) {
+  .num {
+    padding-top: 2rem;
+    display: block;
+  }
+}
+/* Remove side padding for project section on small screens */
+@media (max-width: 768px) {
+  #work .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #work .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #work .col-12,
+  #work .col-md-10,
+  #work .col-lg-8 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  #work .card {
+    border-radius: 0 !important;
+  }
+}
+/* Make #content-wrapper full width on small screens */
+@media (max-width: 768px) {
+  #content-wrapper {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}

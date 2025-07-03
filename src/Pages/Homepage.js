@@ -151,7 +151,7 @@ const Homepage = () => {
       {/* //HOME SECTION */}
 
       {/* SERVICES */}
-    <section id="services" className="full-hight px-lg-5">
+<section id="services" className="full-hight px-lg-5">
   <div className="container">
     <div className="row p-4">
       <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
@@ -161,7 +161,7 @@ const Homepage = () => {
 
     <div className="row gy-4">
       {/* ReactJS */}
-      <div className="col-md-3" data-aos="fade-up">
+      <div className="col-6 col-md-3" data-aos="fade-up">
         <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
           <div className="centered-img-container">
             <img src={Reactjs} alt="ReactJS" />
@@ -171,7 +171,7 @@ const Homepage = () => {
       </div>
 
       {/* NodeJS */}
-      <div className="col-md-3" data-aos="fade-up" data-aos-delay="100">
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
           <div className="centered-img-container">
             <img src={Nodejs} alt="NodeJS" />
@@ -181,7 +181,7 @@ const Homepage = () => {
       </div>
 
       {/* ExpressJS */}
-      <div className="col-md-3" data-aos="fade-up" data-aos-delay="200">
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
           <div className="centered-img-container">
             <img src={ExpressJS} alt="ExpressJS" />
@@ -191,7 +191,7 @@ const Homepage = () => {
       </div>
 
       {/* MongoDB */}
-      <div className="col-md-3" data-aos="fade-up" data-aos-delay="300">
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
         <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
           <div className="centered-img-container">
             <img src={Mongodb} alt="MongoDB" />
@@ -201,7 +201,7 @@ const Homepage = () => {
       </div>
 
       {/* HTML */}
-      <div className="col-md-3" data-aos="fade-up">
+      <div className="col-6 col-md-3" data-aos="fade-up">
         <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
           <div className="centered-img-container">
             <img src={Html} alt="HTML" />
@@ -211,7 +211,7 @@ const Homepage = () => {
       </div>
 
       {/* CSS */}
-      <div className="col-md-3" data-aos="fade-up" data-aos-delay="100">
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
           <div className="centered-img-container">
             <img src={Css} alt="CSS" />
@@ -221,7 +221,7 @@ const Homepage = () => {
       </div>
 
       {/* Redux */}
-      <div className="col-md-3" data-aos="fade-up" data-aos-delay="200">
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
           <div className="centered-img-container">
             <img src={Redux} alt="Redux" />
@@ -231,7 +231,7 @@ const Homepage = () => {
       </div>
 
       {/* MUI */}
-      <div className="col-md-3" data-aos="fade-up" data-aos-delay="300">
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
         <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
           <div className="centered-img-container">
             <img src={Mui} alt="MUI" />
@@ -242,6 +242,7 @@ const Homepage = () => {
     </div>
   </div>
 </section>
+
 
 
       {/* //SERVICES */}

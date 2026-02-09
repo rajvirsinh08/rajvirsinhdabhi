@@ -239,7 +239,104 @@ const Homepage = () => {
           <h5 className="mt-3">MUI</h5>
         </div>
       </div>
+
+
     </div>
+    
+  </div>
+</section>
+{/* ADDITIONAL TECHNOLOGIES SECTION */}
+{/* ADDITIONAL TECHNOLOGIES – PROFESSIONAL SECTION */}
+<section className="w-100 mt-5">
+  <div className="row mb-4">
+    <div className="col-12 text-center" data-aos="fade-up">
+      <h4
+        style={{
+          color: "var(--color-heading)",
+          fontWeight: 700,
+          letterSpacing: "0.6px",
+        }}
+      >
+        Additional Technologies & Concepts
+      </h4>
+      <div
+        style={{
+          width: "70px",
+          height: "3px",
+          backgroundColor: "var(--color-brand)",
+          margin: "12px auto",
+          borderRadius: "10px",
+        }}
+      />
+      <p
+        style={{
+          color: "var(--color-body)",
+          fontSize: "14.5px",
+          maxWidth: "520px",
+          margin: "0 auto",
+          lineHeight: "1.6",
+        }}
+      >
+        Supporting technologies and architectural concepts applied across real-world projects
+      </p>
+    </div>
+  </div>
+
+  <div className="row gy-4">
+    {[
+      "REST APIs",
+      "API Integration",
+      "CRUD Operations",
+      "Authentication & Authorization",
+      "Role-Based Access Control",
+      "Prisma ORM",
+      "Docker (Basic)",
+      "SQL (MySQL)",
+      "Performance Optimization",
+    ].map((tech, index) => (
+      <div
+        key={index}
+        className="col-6 col-md-4 col-lg-3"
+        data-aos="fade-up"
+        data-aos-delay={index * 70}
+      >
+        <div
+          style={{
+            backgroundColor: "var(--color-base)",
+            padding: "18px 16px",
+            borderRadius: "12px",
+            textAlign: "center",
+            border: "1px solid rgba(255,255,255,0.06)",
+            transition: "all 0.35s ease",
+            height: "100%",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "translateY(-5px)";
+            e.currentTarget.style.borderColor = "var(--color-brand)";
+            e.currentTarget.style.boxShadow =
+              "0 10px 25px rgba(0,0,0,0.25)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.borderColor =
+              "rgba(255,255,255,0.06)";
+            e.currentTarget.style.boxShadow = "none";
+          }}
+        >
+          <span
+            style={{
+              fontSize: "14px",
+              fontWeight: 600,
+              color: "var(--color-heading)",
+              letterSpacing: "0.4px",
+              display: "block",
+            }}
+          >
+            {tech}
+          </span>
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 
@@ -268,9 +365,15 @@ const Homepage = () => {
           </div>
           <div className="card-content p-3">
             <h4>CarVista – Buy & Sell Cars Platform</h4>
-            <p className="text-white">
-              Developed a full-stack web application inspired by Cars24 using the MERN stack. Features include car listings, real-time price estimation, test drive bookings, inspection scheduling, and a secure admin dashboard for car/user management.
-            </p>
+           <p className="text-white">
+  Developed a full-stack web application inspired by Cars24 using the 
+  <strong> MERN stack (MongoDB, Express.js, React.js, Node.js)</strong>. 
+  Implemented <strong>REST APIs</strong> for car listings, test drive bookings,
+  inspections, and admin operations. Worked on 
+  <strong>frontend development using React.js</strong> with seamless 
+  <strong>API integration</strong>, authentication, and role-based access control.
+</p>
+
             <a
               href="https://carvistafront-iwxb.vercel.app/"
               target="_blank"
@@ -337,100 +440,154 @@ const Homepage = () => {
 
       {/* //WORK */}
 
-      {/* ABOUT */}
-    <section id="about" className="full-hight px-lg-5">
+ {/* ABOUT */}
+<section id="about" className="full-hight px-lg-5">
   <div className="container gy-4">
+
+    {/* SECTION HEADER */}
     <div className="row p-4">
       <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
         <h6>ABOUT</h6>
-        <h1>Education</h1>
+        <h1>Education & Experience</h1>
       </div>
     </div>
 
-    <div className="row mb-4 gy-4">
-      {/* Internship Card */}
-      <div className="col-md-4" data-aos="fade-up" data-aos-delay="100">
-        <div className="bg-base p-4 rounded-4 shadow-effect h-100 d-flex flex-column justify-content-between">
-          <div>
-            <h5 className="mb-3">MERN Stack Developer Intern</h5>
-            <p><strong>Company:</strong> Brainsquare Technology</p>
-            <p><strong>Duration:</strong> 10 months</p>
-          </div>
+    {/* EXPERIENCE + EDUCATION GRID */}
+    <div className="row gy-5">
+
+      {/* EXPERIENCE COLUMN */}
+      <div className="col-lg-6" data-aos="fade-up">
+        <h4 className="mb-4 text-brand">Professional Experience</h4>
+
+        {/* Current Internship */}
+        <div className="bg-base p-4 rounded-4 shadow-effect mb-4">
+          <h5>Web Development Intern <span className="text-brand">(Current)</span></h5>
+          <p className="mb-1"><strong>Company:</strong> Devam Technologies</p>
+          <p className="mb-1"><strong>Tech Stack:</strong> MERN, Next.js, Prisma, Docker</p>
+          <p className="mb-0"><strong>Duration:</strong> Sep 2025 – Present</p>
+        </div>
+
+        {/* Past Internship */}
+        <div className="bg-base p-4 rounded-4 shadow-effect">
+          <h5>MERN Stack Developer Intern</h5>
+          <p className="mb-1"><strong>Company:</strong> BrainSquare Technologies</p>
+          <p className="mb-1"><strong>Tech Stack:</strong> MongoDB, Express, React, Node.js</p>
+          <p className="mb-0"><strong>Duration:</strong> Nov 2024 – Apr 2025</p>
         </div>
       </div>
 
-      {/* College Card */}
-      <div className="col-md-4" data-aos="fade-up" data-aos-delay="200">
-        <div className="bg-base p-4 rounded-4 shadow-effect h-100 d-flex flex-column justify-content-between">
-          <div>
-            <h5 className="mb-3">Shree Chimanbhai Patel Institute of Computer Applications</h5>
-            <p><strong>Duration:</strong> 2022 – 2025</p>
-            <p><strong>Total CGPA:</strong> 7.67</p>
-          </div>
+      {/* EDUCATION COLUMN */}
+      <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <h4 className="mb-4 text-brand">Education</h4>
+
+        {/* MCA */}
+        <div className="bg-base p-4 rounded-4 shadow-effect mb-4">
+          <h5>Master of Computer Applications (MCA)</h5>
+          <p className="mb-1"><strong>Status:</strong> Ongoing</p>
+          <p className="mb-1"><strong>SGPA:</strong> 8.58</p>
+          <p className="mb-0"><strong>CGPA:</strong> 8.58</p>
+        </div>
+
+        {/* BCA */}
+        <div className="bg-base p-4 rounded-4 shadow-effect">
+          <h5>Bachelor of Computer Applications (BCA)</h5>
+          <p className="mb-1"><strong>Status:</strong> Completed</p>
+          <p className="mb-1"><strong>CGPA:</strong> 7.67</p>
+          <p className="mb-0"><strong>Duration:</strong> 2022 – 2025</p>
         </div>
       </div>
 
-      {/* School Card */}
-      <div className="col-md-4" data-aos="fade-up" data-aos-delay="300">
-        <div className="bg-base p-4 rounded-4 shadow-effect h-100 d-flex flex-column justify-content-between">
-          <div>
-            <h5 className="mb-3">Shree Muktajivan School, Ahmedabad</h5>
-            <p><strong>X:</strong> 75.16%</p>
-            <p><strong>XII:</strong> 81.73%</p>
-          </div>
-        </div>
+    </div>
+
+    {/* PROFESSIONAL SUMMARY */}
+    <div className="row mt-5">
+      <div className="col-md-10 mx-auto text-center" data-aos="fade-up">
+        <p className="lead text-white" style={{ lineHeight: "1.7" }}>
+          I am a <strong>MERN Stack Developer</strong> with hands-on experience in
+          building scalable, production-ready web applications using
+          <strong> React.js, Next.js, Node.js, Express.js, and MongoDB</strong>.
+          I specialize in <strong>REST API development</strong>, seamless
+          <strong> frontend-backend integration</strong>, authentication,
+          CRUD operations, and performance optimization.
+        </p>
       </div>
     </div>
+
   </div>
 </section>
+{/* //ABOUT */}
+
 
       {/* //ABOUT */}
 
 {/* CERTIFICATIONS */}
 <section id="certifications" className="full-hight px-lg-5">
   <div className="container gy-4">
+
+    {/* SECTION HEADER */}
     <div className="row p-4">
       <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
         <h6>CERTIFICATIONS</h6>
-        <h1>My Achievements & Certifications</h1>
+        <h1>Achievements & Certifications</h1>
       </div>
     </div>
 
-    <div className="row gy-3 h6">
-   {/* Certification 2 - Accenture Software Engineering Job Simulation */}
-{/* Certification 2 - Accenture Software Engineering Job Simulation */}
-{/* Certification 2 - Accenture Software Engineering Job Simulation */}
-<div className="col-lg-4  mx-auto text-center" data-aos="fade-up" data-aos-delay="400">
-  <div className="p-4 shadow-effect bg-base py-4 rounded-4 text-center">
-    <div className="mb-3">
-      <i className="las la-certificate fs-2"></i>
-    </div>
-    <img
-      src={softwareengsimulationcerti}
-      alt="Accenture Software Engineering Job Simulation Certificate"
-      className="img-fluid rounded mb-3"
-      style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-    />
-    <p>
-      Completed the <strong>Software Engineering Job Simulation</strong> by Accenture through Forage.
-    </p>
-    <div className="person">
-      <h3>Issued by: Accenture (Forage)</h3>
-      <p>July 2025</p>
-    </div>
-  </div>
-</div>
+    {/* CERTIFICATIONS GRID */}
+    <div className="row gy-4 justify-content-center">
 
+      {/* Accenture Certification */}
+      <div className="col-md-6 col-lg-4" data-aos="fade-up">
+        <div className="bg-base p-4 rounded-4 shadow-effect h-100 text-center">
+          <i className="las la-certificate fs-2 mb-3 text-brand"></i>
 
+          <img
+            src={softwareengsimulationcerti}
+            alt="Accenture Software Engineering Job Simulation Certificate"
+            className="img-fluid rounded mb-3"
+            style={{ objectFit: "contain" }}
+          />
 
+          <h5 className="mb-2">
+            Software Engineering Job Simulation
+          </h5>
 
-     
-  
+          <p className="small mb-2">
+            Completed a hands-on job simulation covering real-world
+            software engineering tasks and problem-solving workflows.
+          </p>
+
+          <p className="mb-0">
+            <strong>Issued by:</strong> Accenture (Forage) <br />
+            <strong>Date:</strong> July 2025
+          </p>
+        </div>
+      </div>
+
+      {/* IBM RAG Certification */}
+      <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div className="bg-base p-4 rounded-4 shadow-effect h-100 text-center">
+          <i className="las la-certificate fs-2 mb-3 text-brand"></i>
+
+          <h5 className="mb-2">
+            Introduction to Retrieval Augmented Generation (RAG)
+          </h5>
+
+          <p className="small mb-2">
+            Learned RAG fundamentals including retrieval mechanisms,
+            embeddings, vector search, and AI workflow integration.
+          </p>
+
+          <p className="mb-0">
+            <strong>Issued by:</strong> IBM SkillsBuild
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
-
 {/* //CERTIFICATIONS */}
+
 
      
 

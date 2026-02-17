@@ -23,8 +23,6 @@ import Mui from '../Assets/images/Mui.png'
 import Rajvirsinh_Dabhi_Resume from '../Assets/pdf/Rajvirsinh Dabhi Resume1.pdf';
 import softwareengsimulationcerti from '../Assets/images/Software Engineering Job Simulation Certi_page-0001.jpg'
 
-import tcssoftskill from '../Assets/images/Chauhan_Piyush_tcs softskill_page-0001.jpg'
-import tatacybersecurity from '../Assets/images/Piyush Chauhan Cybersecurity Analyst Job Simulation_page-0001.jpg'
 // NO LONGER NEEDED if using Bootstrap's native ScrollSpy
 // import ScrollSpy from 'react-scrollspy';
 

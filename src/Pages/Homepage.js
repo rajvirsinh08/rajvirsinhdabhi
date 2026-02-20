@@ -41,19 +41,23 @@ const [formData, setFormData] = useState({
   phone: "",
   message: "",
 });
+const [popup, setPopup] = useState({
+  show: false,
+  type: "", // "success" | "error" | "warning"
+  message: "",
+});
 const [loading, setLoading] = useState(false);
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  // Validation
   if (!formData.name || !formData.email || !formData.message) {
-    toast.warning("Please fill all required fields ⚠️", {
-      position: "top-right",
-      autoClose: 3000,
-      theme: "dark",
-    });
-    return;
-  }
+  setPopup({
+    show: true,
+    type: "warning",
+    message: "Please fill all required fields.",
+  });
+  return;
+}
 
   setLoading(true);
 
@@ -81,17 +85,11 @@ const handleSubmit = async (e) => {
       throw new Error(data.message || "Something went wrong");
     }
 
-    // Success Toast
-    toast.success("Message sent successfully 🚀", {
-      position: "top-right",
-      autoClose: 3000,
-      theme: "dark",
-      style: {
-        background: "#0f1720",
-        color: "#ffffff",
-        border: "1px solid #598565",
-      },
-    });
+    setPopup({
+  show: true,
+  type: "success",
+  message: "Your message has been sent successfully.",
+});
 
     // Reset Form
     setFormData({
@@ -106,11 +104,11 @@ const handleSubmit = async (e) => {
   } catch (error) {
     console.error(error);
 
-    toast.error("Failed to send message ❌", {
-      position: "top-right",
-      autoClose: 3000,
-      theme: "dark",
-    });
+  setPopup({
+  show: true,
+  type: "error",
+  message: "Failed to send message. Please try again.",
+});
   } finally {
     setLoading(false);
   }
@@ -1435,15 +1433,21 @@ height: "clamp(220px, 60vw, 300px)",
 
               <div className="col-12 col-md-6">
 <input
-  type="text"
+  type="tel"
   name="phone"
   value={formData.phone}
-  onChange={(e) =>
-    setFormData({ ...formData, phone: e.target.value })
-  }
+  maxLength={10}
+  inputMode="numeric"
+  pattern="[0-9]*"
+  onChange={(e) => {
+    const onlyNumbers = e.target.value.replace(/\D/g, ""); // remove non-numbers
+    if (onlyNumbers.length <= 10) {
+      setFormData({ ...formData, phone: onlyNumbers });
+    }
+  }}
   placeholder="Phone Number"
   style={inputStyle}
-/>              </div>
+/>         </div>
 
          <div className="col-12 col-md-6" style={{ position: "relative" }}>
 
@@ -1641,8 +1645,132 @@ height: "clamp(220px, 60vw, 300px)",
           </div>
         </div>
       )}
-      <ToastContainer />
+{popup.show && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.75)",
+      backdropFilter: "blur(6px)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 9999,
+      animation: "fadeIn 0.3s ease",
+    }}
+  >
+    <div
+      style={{
+        width: "90%",
+        maxWidth: "420px",
+        background: "#0f1720",
+        borderRadius: "20px",
+        padding: "35px 30px",
+        border: "1px solid rgba(255,255,255,0.08)",
+        boxShadow: "0 30px 80px rgba(0,0,0,0.6)",
+        textAlign: "center",
+        animation: "slideUp 0.4s ease",
+      }}
+    >
+      {/* ICON */}
+      <div
+        style={{
+          width: "70px",
+          height: "70px",
+          margin: "0 auto 20px",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "28px",
+          color: "#fff",
+          background:
+            popup.type === "success"
+              ? "linear-gradient(135deg, #598565, #8FBF9F)"
+              : popup.type === "warning"
+              ? "linear-gradient(135deg, #f59e0b, #fbbf24)"
+              : "linear-gradient(135deg, #ef4444, #f87171)",
+        }}
+      >
+        {popup.type === "success"
+          ? "✓"
+          : popup.type === "warning"
+          ? "!"
+          : "✕"}
+      </div>
+
+      {/* TITLE */}
+      <h4
+        style={{
+          color: "#ffffff",
+          fontWeight: 700,
+          marginBottom: "15px",
+        }}
+      >
+        {popup.type === "success"
+          ? "Success"
+          : popup.type === "warning"
+          ? "Warning"
+          : "Error"}
+      </h4>
+
+      {/* MESSAGE */}
+      <p
+        style={{
+          color: "#A6B0A8",
+          fontSize: "14px",
+          lineHeight: "1.7",
+          marginBottom: "30px",
+        }}
+      >
+        {popup.message}
+      </p>
+
+      {/* BUTTONS */}
+      <div
+        style={{
+          display: "flex",
+          gap: "12px",
+          justifyContent: "center",
+        }}
+      >
+        <button
+          onClick={() => setPopup({ ...popup, show: false })}
+          style={{
+            padding: "10px 18px",
+            borderRadius: "10px",
+            border: "1px solid rgba(255,255,255,0.1)",
+            background: "transparent",
+            color: "#A6B0A8",
+            cursor: "pointer",
+            fontSize: "14px",
+          }}
+        >
+          Close
+        </button>
+
+        <button
+          onClick={() => setPopup({ ...popup, show: false })}
+          style={{
+            padding: "10px 20px",
+            borderRadius: "10px",
+            border: "none",
+            background: "linear-gradient(90deg, #598565, #8FBF9F)",
+            color: "#ffffff",
+            fontWeight: 600,
+            cursor: "pointer",
+            fontSize: "14px",
+          }}
+        >
+          Continue
+        </button>
+      </div>
     </div>
+  </div>
+)}    </div>
   );
 };
 

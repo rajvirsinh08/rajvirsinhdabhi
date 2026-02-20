@@ -92,24 +92,7 @@ img {
   object-fit: contain;
 }
 
-@media (min-width: 992px) {
-  .navbar {
-    min-height: 100vh !important;
-    max-width: var(--sidbar-width) !important;
-    background: rgb(222, 5, 5);
-      /* url("../images/sidebar-img.jpg") !important; */
-    background-size: cover;
-    background-position: center;
-  }
 
-  .navbar-brand img {
-    border: 5px solid var(--color-brand);
-  }
-
-  #content-wrapper {
-    margin-left: var(--sidbar-width);
-  }
-}
 
 .text-brand {
   color: var(--color-brand);

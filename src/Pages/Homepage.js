@@ -7,6 +7,8 @@ import "../Assets/css/aos.css"; // Re-import AOS CSS for clarity in React contex
 import "../Assets/css/line-awesome.min.css"; // Import Line Awesome CSS
 import "../Assets/css/style.css"; // Import your custom style.css
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // Import images
 import profilePic from "../Assets/images/Rajvirsinh Dabhi.jpg";
 import project1 from "../Assets/images/Carvistahomepage.png";
@@ -29,6 +31,130 @@ import softwareengsimulationcerti from "../Assets/images/Software Engineering Jo
 
 const Homepage = () => {
   const [selectedCert, setSelectedCert] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [openDropdown, setOpenDropdown] = useState(false);
+const [selectedProject, setSelectedProject] = useState("");
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+});
+const [loading, setLoading] = useState(false);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Validation
+  if (!formData.name || !formData.email || !formData.message) {
+    toast.warning("Please fill all required fields ⚠️", {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "dark",
+    });
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const response = await fetch(
+      "https://rajvirintrobackend.vercel.app/api/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          projectType: selectedProject,
+          message: formData.message,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong");
+    }
+
+    // Success Toast
+    toast.success("Message sent successfully 🚀", {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "dark",
+      style: {
+        background: "#0f1720",
+        color: "#ffffff",
+        border: "1px solid #598565",
+      },
+    });
+
+    // Reset Form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+
+    setSelectedProject("");
+
+  } catch (error) {
+    console.error(error);
+
+    toast.error("Failed to send message ❌", {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "dark",
+    });
+  } finally {
+    setLoading(false);
+  }
+};
+  useEffect(() => {
+    const sections = [
+      "home",
+      "skills",
+      "work",
+      "about",
+      "certifications",
+      "contact",
+    ];
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 150;
+
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          if (
+            scrollPosition >= element.offsetTop &&
+            scrollPosition < element.offsetTop + element.offsetHeight
+          ) {
+            setActiveSection(section);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  const inputStyle = {
+    width: "100%",
+    padding: "14px 20px",
+    borderRadius: "12px",
+    border: "1px solid rgba(255,255,255,0.1)",
+    background: "rgba(255,255,255,0.04)",
+    color: "#fff",
+    fontSize: "14px",
+    outline: "none",
+  };
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -172,63 +298,167 @@ const Homepage = () => {
         }}
       />
       {/* NAV BAR */}
-      <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div className="container flex-lg-column">
-          {/* FIX: Change href="#" to href="#home" or "/" for proper navigation */}
-          <a className="navbar-brand mx-lg-auto mb-lg-4" href="#home">
-            <span className="fw-bold h3 d-block d-lg-none">
-              Rajvirsinh Dabhi
-            </span>
-            <img
-              src={profilePic}
-              className="d-none d-lg-block rounded-circle profilepic"
-              alt="Rajvirsinh Dabhi"
-            />
-          </a>
+      <nav
+        style={{
+          position: "fixed",
+          top: "15px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          background: "#0f1720",
+          borderRadius: "50px",
+          padding: "12px 25px",
+          width: "90%",
+          maxWidth: "1100px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
+          zIndex: 1000,
+          border: "1px solid rgba(255,255,255,0.06)",
+        }}
+      >
+        {/* Logo */}
+        <a
+          href="#home"
+          style={{
+            fontWeight: 700,
+            fontSize: "14px",
+            textDecoration: "none",
+            letterSpacing: "1px",
+          }}
+        >
+          <span style={{ color: "#ffffff" }}>RAJVIRSINH </span>
+          <span style={{ color: "#598565" }}>DABHI</span>
+        </a>
+        {/* Desktop Links */}
+        <div
+          className="d-none d-lg-flex"
+          style={{ gap: "35px", alignItems: "center" }}
+        >
+          {["Home", "Skills", "Work", "About", "Certifications", "Contact"].map(
+            (item, index) => {
+              const sectionId = item.toLowerCase();
+
+              return (
+                <a
+                  key={index}
+                  href={`#${sectionId}`}
+                  style={{
+                    color: activeSection === sectionId ? "#ffffff" : "#9BA3A7",
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    textDecoration: "none",
+                    position: "relative",
+                    paddingBottom: "4px",
+                  }}
+                >
+                  {item}
+
+                  {/* Underline */}
+                  {activeSection === sectionId && (
+                    <span
+                      style={{
+                        position: "absolute",
+                        left: 0,
+                        bottom: 0,
+                        width: "100%",
+                        height: "2px",
+                        background: "linear-gradient(90deg, #598565, #8FBF9F)",
+                        borderRadius: "2px",
+                      }}
+                    />
+                  )}
+                </a>
+              );
+            },
+          )}
+
+       <a
+  href={Rajvirsinh_Dabhi_Resume}
+  download="Rajvirsinh_Dabhi_Resume.pdf"
+  style={{
+    padding: "8px 18px",
+    borderRadius: "30px",
+    background: "#598565",
+    color: "#ffffff",
+    fontSize: "13px",
+    fontWeight: 600,
+    textDecoration: "none",
+  }}
+>
+  Download Resume
+</a>
+        </div>
+
+        {/* Hamburger Button (Mobile Only) */}
+        <div className="d-lg-none">
           <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#fff",
+              fontSize: "22px",
+            }}
           >
-            <span className="navbar-toggler-icon"></span>
+            ☰
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto flex-lg-column text-lg-center">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#home">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#services">
-                  Skills
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#work">
-                  Work
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#about">
-                  About
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#certifications">
-                  Certifications
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
       </nav>
       {/* //NAV BAR */}
+      {menuOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: "70px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "90%",
+            background: "#0f1720",
+            borderRadius: "20px",
+            padding: "25px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            zIndex: 999,
+            border: "1px solid rgba(255,255,255,0.06)",
+          }}
+        >
+          {["Home", "Skills", "Work", "About", "Certifications", "Contact"].map(
+            (item, index) => (
+              <a
+                key={index}
+                href={`#${item.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  color: "#9BA3A7",
+                  fontSize: "15px",
+                  textDecoration: "none",
+                }}
+              >
+                {item}
+              </a>
+            ),
+          )}
 
+          <a
+            href={Rajvirsinh_Dabhi_Resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              padding: "10px",
+              borderRadius: "25px",
+              background: "#598565",
+              color: "#fff",
+              textAlign: "center",
+              textDecoration: "none",
+            }}
+          >
+            Resume
+          </a>
+        </div>
+      )}
+      
       {/* HOME SECTION */}
       <section
         id="home"
@@ -238,6 +468,7 @@ const Homepage = () => {
           display: "flex",
           alignItems: "center",
           overflowX: "hidden",
+          marginTop:"45px"
         }}
       >
         {/* Diagonal Background (Desktop Only Visual Enhancement) */}
@@ -255,30 +486,11 @@ const Homepage = () => {
         />
 
         <div className="container position-relative" style={{ zIndex: 2 }}>
+          
           <div className="row align-items-center">
             {/* ================= LEFT CONTENT ================= */}
             <div className="col-lg-7 text-center text-lg-start py-5">
-              {/* Mobile Profile Only */}
-              <div
-                className="d-block d-lg-none mb-4"
-                style={{
-                  marginTop: "35px", // 👈 Adjust this value (60–90px if needed)
-                  marginBottom: "25px",
-                }}
-              >
-                <img
-                  src={profilePic}
-                  alt="Rajvirsinh Dabhi"
-                  style={{
-                    width: "140px",
-                    height: "140px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    border: "4px solid #598565",
-                    animation: "fadeIn 1s ease",
-                  }}
-                />
-              </div>
+             
 
               <h1
                 style={{
@@ -317,8 +529,7 @@ const Homepage = () => {
 
               {/* Skill Tags */}
               <div
-                className="mt-4 d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start"
-                style={{ animation: "slideUp 1.4s ease" }}
+className="mt-4 d-flex flex-nowrap gap-2 justify-content-center justify-content-lg-start"                style={{ animation: "slideUp 1.4s ease" }}
               >
                 {["React", "Node.js", "MongoDB", "Express"].map((item, i) => (
                   <span
@@ -337,7 +548,34 @@ const Homepage = () => {
                   </span>
                 ))}
               </div>
-
+{/* ================= MOBILE HERO IMAGE ================= */}
+<div className="d-block d-lg-none text-center mt-5">
+  <div
+    style={{
+      position: "relative",
+      width: "clamp(200px, 70vw, 260px)",
+      height: "clamp(200px, 70vw, 260px)",
+      margin: "0 auto",
+      borderRadius: "50%",
+      border: "3px dashed #598565",
+      animation: "rotateRing 15s linear infinite",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <img
+      src="/heroimg.png"
+      alt="Hero Visual"
+      style={{
+        width: "280px",
+        height: "280px",
+        objectFit: "contain",
+        animation: "counterRotate 15s linear infinite",
+      }}
+    />
+  </div>
+</div>
               {/* Buttons */}
               <div
                 className="mt-4 d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start"
@@ -398,12 +636,11 @@ const Homepage = () => {
             </div>
 
             {/* ================= RIGHT SIDE RING (Desktop Only) ================= */}
-            <div className="col-lg-5 d-none d-lg-flex justify-content-center align-items-center">
-              <div
+<div className="d-none d-lg-flex col-lg-5 justify-content-center align-items-center mt-lg-0">          <div
                 style={{
                   position: "relative",
-                  width: "300px",
-                  height: "300px",
+                 width: "clamp(220px, 60vw, 300px)",
+height: "clamp(220px, 60vw, 300px)",
                   borderRadius: "50%",
                   border: "3px dashed #598565",
                   animation: "rotateRing 15s linear infinite",
@@ -456,7 +693,7 @@ const Homepage = () => {
       {/* //HOME SECTION */}
 
       {/* SERVICES */}
-      <section id="services" className="full-hight px-lg-5">
+      <section id="skills" className="full-hight px-lg-5">
         <div className="container">
           <div className="row p-4">
             <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
@@ -745,108 +982,135 @@ const Homepage = () => {
       {/* //WORK */}
 
       {/* ABOUT */}
-      <section id="about" className="full-hight px-lg-5">
-        <div className="container gy-4">
-          {/* SECTION HEADER */}
-          <div className="row p-4">
-            <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
-              <h6>ABOUT</h6>
-              <h1>Education & Experience</h1>
-            </div>
-          </div>
+   <section id="about" className="full-hight px-lg-5">
+  <div className="container gy-4">
 
-          {/* EXPERIENCE + EDUCATION GRID */}
-          <div className="row gy-5">
-            {/* EXPERIENCE COLUMN */}
-            <div className="col-lg-6" data-aos="fade-up">
-              <h4 className="mb-4 text-brand">Professional Experience</h4>
+    {/* SECTION HEADER */}
+    <div className="row p-4">
+      <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
+        <h6>ABOUT</h6>
+        <h1>Education & Experience</h1>
+      </div>
+    </div>
 
-              {/* Current Internship */}
-              <div className="bg-base p-4 rounded-4 shadow-effect mb-4">
-                <h5>
-                  Web Development Intern{" "}
-                  <span className="text-brand">(Current)</span>
-                </h5>
-                <p className="mb-1">
-                  <strong>Company:</strong> Devam Technologies
-                </p>
-                <p className="mb-1">
-                  <strong>Tech Stack:</strong> MERN, Next.js, Prisma, Docker
-                </p>
-                <p className="mb-0">
-                  <strong>Duration:</strong> Sep 2025 – Present
-                </p>
-              </div>
+    {/* ✅ DESKTOP PROFILE IMAGE (Only Desktop View) */}
+    <div className="row">
+     <div
+  className="col-12 text-center mb-5"
+  data-aos="zoom-in"
+>
+        <img
+          src={profilePic}
+          alt="Rajvirsinh Dabhi"
+          style={{
+            width: "180px",
+            height: "180px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            border: "5px solid #598565",
+            boxShadow: "0 20px 60px rgba(89,133,101,0.35)",
+            transition: "all 0.4s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        />
+      </div>
+    </div>
 
-              {/* Past Internship */}
-              <div className="bg-base p-4 rounded-4 shadow-effect">
-                <h5>MERN Stack Developer Intern</h5>
-                <p className="mb-1">
-                  <strong>Company:</strong> BrainSquare Technologies
-                </p>
-                <p className="mb-1">
-                  <strong>Tech Stack:</strong> MongoDB, Express, React, Node.js
-                </p>
-                <p className="mb-0">
-                  <strong>Duration:</strong> Nov 2024 – Apr 2025
-                </p>
-              </div>
-            </div>
+    {/* EXPERIENCE + EDUCATION GRID */}
+    <div className="row gy-5">
 
-            {/* EDUCATION COLUMN */}
-            <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <h4 className="mb-4 text-brand">Education</h4>
+      {/* EXPERIENCE COLUMN */}
+      <div className="col-lg-6" data-aos="fade-up">
+        <h4 className="mb-4 text-brand">Professional Experience</h4>
 
-              {/* MCA */}
-              <div className="bg-base p-4 rounded-4 shadow-effect mb-4">
-                <h5>Master of Computer Applications (MCA)</h5>
-                <p className="mb-1">
-                  <strong>Status:</strong> Ongoing
-                </p>
-                <p className="mb-1">
-                  <strong>SGPA:</strong> 8.58
-                </p>
-                <p className="mb-0">
-                  <strong>CGPA:</strong> 8.58
-                </p>
-              </div>
-
-              {/* BCA */}
-              <div className="bg-base p-4 rounded-4 shadow-effect">
-                <h5>Bachelor of Computer Applications (BCA)</h5>
-                <p className="mb-1">
-                  <strong>Status:</strong> Completed
-                </p>
-                <p className="mb-1">
-                  <strong>CGPA:</strong> 7.67
-                </p>
-                <p className="mb-0">
-                  <strong>Duration:</strong> 2022 – 2025
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* PROFESSIONAL SUMMARY */}
-          <div className="row mt-5">
-            <div className="col-md-10 mx-auto text-center" data-aos="fade-up">
-              <p className="lead text-white" style={{ lineHeight: "1.7" }}>
-                I am a <strong>MERN Stack Developer</strong> with hands-on
-                experience in building scalable, production-ready web
-                applications using
-                <strong>
-                  {" "}
-                  React.js, Next.js, Node.js, Express.js, and MongoDB
-                </strong>
-                . I specialize in <strong>REST API development</strong>,
-                seamless
-                <strong> frontend-backend integration</strong>, authentication,
-                CRUD operations, and performance optimization.
-              </p>
-            </div>
-          </div>
+        <div className="bg-base p-4 rounded-4 shadow-effect mb-4">
+          <h5>
+            Web Development Intern{" "}
+            <span className="text-brand">(Current)</span>
+          </h5>
+          <p className="mb-1">
+            <strong>Company:</strong> Devam Technologies
+          </p>
+          <p className="mb-1">
+            <strong>Tech Stack:</strong> MERN, Next.js, Prisma, Docker
+          </p>
+          <p className="mb-0">
+            <strong>Duration:</strong> Sep 2025 – Present
+          </p>
         </div>
-      </section>
+
+        <div className="bg-base p-4 rounded-4 shadow-effect">
+          <h5>MERN Stack Developer Intern</h5>
+          <p className="mb-1">
+            <strong>Company:</strong> BrainSquare Technologies
+          </p>
+          <p className="mb-1">
+            <strong>Tech Stack:</strong> MongoDB, Express, React, Node.js
+          </p>
+          <p className="mb-0">
+            <strong>Duration:</strong> Nov 2024 – Apr 2025
+          </p>
+        </div>
+      </div>
+
+      {/* EDUCATION COLUMN */}
+      <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <h4 className="mb-4 text-brand">Education</h4>
+
+        <div className="bg-base p-4 rounded-4 shadow-effect mb-4">
+          <h5>Master of Computer Applications (MCA)</h5>
+          <p className="mb-1">
+            <strong>Status:</strong> Ongoing
+          </p>
+          <p className="mb-1">
+            <strong>SGPA:</strong> 8.58
+          </p>
+          <p className="mb-0">
+            <strong>CGPA:</strong> 8.58
+          </p>
+        </div>
+
+        <div className="bg-base p-4 rounded-4 shadow-effect">
+          <h5>Bachelor of Computer Applications (BCA)</h5>
+          <p className="mb-1">
+            <strong>Status:</strong> Completed
+          </p>
+          <p className="mb-1">
+            <strong>CGPA:</strong> 7.67
+          </p>
+          <p className="mb-0">
+            <strong>Duration:</strong> 2022 – 2025
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    {/* PROFESSIONAL SUMMARY */}
+    <div className="row mt-5">
+      <div className="col-md-10 mx-auto text-center" data-aos="fade-up">
+        <p className="lead text-white" style={{ lineHeight: "1.7" }}>
+          I am a <strong>MERN Stack Developer</strong> with hands-on
+          experience in building scalable, production-ready web
+          applications using
+          <strong>
+            {" "}
+            React.js, Next.js, Node.js, Express.js, and MongoDB
+          </strong>.
+          I specialize in <strong>REST API development</strong>,
+          seamless <strong>frontend-backend integration</strong>,
+          authentication, CRUD operations, and performance optimization.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
       {/* //ABOUT */}
 
       {/* //ABOUT */}
@@ -954,7 +1218,348 @@ const Homepage = () => {
         </div>
       </section>
       {/* //CERTIFICATIONS */}
+      {/* CONTACT */}
+ {/* CONTACT SECTION */}
+<section
+  id="contact"
+  style={{
+    padding: "100px 15px",
+    minHeight: "100vh",
+  }}
+>
+  <div className="container">
 
+    {/* ===== SECTION HEADER ===== */}
+    <div className="row mb-5">
+      <div className="col-12 col-md-8 mx-auto text-center">
+        <h6
+          style={{
+            color: "#598565",
+            letterSpacing: "2px",
+            marginBottom: "10px",
+            fontSize: "14px",
+          }}
+        >
+          CONTACT
+        </h6>
+
+        <h1
+          style={{
+            color: "#ffffff",
+            fontWeight: 800,
+            marginBottom: "15px",
+            fontSize: "clamp(26px, 5vw, 40px)",
+          }}
+        >
+          Let’s Start a Conversation
+        </h1>
+
+        <p
+          style={{
+            color: "#A6B0A8",
+            lineHeight: "1.8",
+            maxWidth: "650px",
+            margin: "0 auto",
+            fontSize: "15px",
+          }}
+        >
+          Whether you need a website, full-stack web application,
+          or backend API development — I’m here to help you build
+          scalable and secure digital solutions.
+        </p>
+      </div>
+    </div>
+
+    {/* ===== MAIN CONTENT ===== */}
+    <div className="row gy-5">
+
+      {/* ================= LEFT SIDE ================= */}
+      <div
+        className="col-12 col-lg-5"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        {[
+          {
+            icon: "las la-phone",
+            title: "Call Me",
+            value: "+91 97249 55379",
+            link: "tel:9724955379",
+          },
+          {
+            icon: "las la-envelope",
+            title: "Email Me",
+            value: "rajvirsinhdabhi1@gmail.com",
+            link: "mailto:rajvirsinhdabhi1@gmail.com",
+          },
+          {
+            icon: "lab la-whatsapp",
+            title: "WhatsApp",
+            value: "Chat on WhatsApp",
+            link: "https://wa.me/919724955379",
+          },
+          {
+            icon: "las la-map-marker",
+            title: "Location",
+            value: "Ahmedabad,Gujarat, India",
+            link: null,
+          },
+        ].map((item, index) => (
+          <div
+            key={index}
+            onClick={() => item.link && window.open(item.link, "_blank")}
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              borderRadius: "16px",
+              padding: "18px 20px",
+              display: "flex",
+              alignItems: "center",
+              gap: "15px",
+              marginBottom: "18px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              transition: "all 0.3s ease",
+              cursor: item.link ? "pointer" : "default",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-5px)";
+              e.currentTarget.style.borderColor = "#598565";
+              e.currentTarget.style.boxShadow =
+                "0 15px 40px rgba(0,0,0,0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.borderColor =
+                "rgba(255,255,255,0.08)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            <div
+              style={{
+                width: "45px",
+                height: "45px",
+                borderRadius: "12px",
+                background:
+                  item.title === "WhatsApp"
+                    ? "linear-gradient(135deg, #25D366, #128C7E)"
+                    : "linear-gradient(135deg, #598565, #3D6B49)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+                fontSize: "16px",
+                flexShrink: 0,
+              }}
+            >
+              <i className={item.icon}></i>
+            </div>
+
+            <div>
+              <div
+                style={{
+                  fontSize: "11px",
+                  color: "#8FA39B",
+                  letterSpacing: "1px",
+                  textTransform: "uppercase",
+                  marginBottom: "4px",
+                }}
+              >
+                {item.title}
+              </div>
+
+              <div
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                }}
+              >
+                {item.value}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ================= RIGHT SIDE FORM ================= */}
+      <div className="col-12 col-lg-7">
+        <div
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            backdropFilter: "blur(20px)",
+            padding: "clamp(25px, 5vw, 50px)",
+            borderRadius: "20px",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 25px 60px rgba(0,0,0,0.4)",
+          }}
+        >
+          <h4
+            style={{
+              color: "#ffffff",
+              marginBottom: "25px",
+              fontWeight: 700,
+            }}
+          >
+            Send me a message
+          </h4>
+
+<form onSubmit={handleSubmit}>       
+       <div className="row g-4">
+
+
+              <div className="col-12 col-md-6">
+<input
+  type="text"
+  name="name"
+  value={formData.name}
+  onChange={(e) =>
+    setFormData({ ...formData, name: e.target.value })
+  }
+  placeholder="Full Name"
+  style={inputStyle}
+/>              </div>
+
+              <div className="col-12 col-md-6">
+<input
+  type="email"
+  name="email"
+  value={formData.email}
+  onChange={(e) =>
+    setFormData({ ...formData, email: e.target.value })
+  }
+  placeholder="Email Address"
+  style={inputStyle}
+/>              </div>
+
+              <div className="col-12 col-md-6">
+<input
+  type="text"
+  name="phone"
+  value={formData.phone}
+  onChange={(e) =>
+    setFormData({ ...formData, phone: e.target.value })
+  }
+  placeholder="Phone Number"
+  style={inputStyle}
+/>              </div>
+
+         <div className="col-12 col-md-6" style={{ position: "relative" }}>
+
+  {/* Selected Box */}
+  <div
+    onClick={() => setOpenDropdown(!openDropdown)}
+    style={{
+      ...inputStyle,
+      cursor: "pointer",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      userSelect: "none",
+    }}
+  >
+    {selectedProject || "Select Project Type"}
+    <span style={{ fontSize: "12px" }}>
+      {openDropdown ? "▲" : "▼"}
+    </span>
+  </div>
+
+  {/* Dropdown Options */}
+  {openDropdown && (
+    <div
+      style={{
+        position: "absolute",
+        width: "100%",
+        background: "#1a1f24",
+        borderRadius: "12px",
+        marginTop: "8px",
+        border: "1px solid rgba(255,255,255,0.08)",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
+        zIndex: 1000,
+        overflow: "hidden",
+      }}
+    >
+      {[
+        "Business Website",
+        "E-commerce Website",
+        "Web Application",
+        "Full Stack Application",
+        "Admin Dashboard",
+        "Backend API Development",
+        "Other",
+      ].map((option, index) => (
+        <div
+          key={index}
+          onClick={() => {
+            setSelectedProject(option);
+            setOpenDropdown(false);
+          }}
+          style={{
+            padding: "12px 16px",
+            cursor: "pointer",
+            color: "#ffffff",
+            fontSize: "14px",
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background =
+              "rgba(89,133,101,0.2)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "transparent";
+          }}
+        >
+          {option}
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+              <div className="col-12">
+              <textarea
+  rows="5"
+  name="message"
+  value={formData.message}
+  onChange={(e) =>
+    setFormData({ ...formData, message: e.target.value })
+  }
+  placeholder="How can I help you?"
+  style={{ ...inputStyle, resize: "none" }}
+/>
+              </div>
+
+              <div className="col-12">
+              <button
+  type="submit"
+  disabled={loading}
+  style={{
+    width: "100%",
+    padding: "15px",
+    borderRadius: "12px",
+    border: "none",
+    background: "linear-gradient(90deg, #598565, #8FBF9F)",
+    color: "#ffffff",
+    fontWeight: 600,
+    fontSize: "15px",
+    boxShadow: "0 10px 25px rgba(89,133,101,0.35)",
+    opacity: loading ? 0.7 : 1,
+    cursor: loading ? "not-allowed" : "pointer",
+  }}
+>
+  {loading ? "Sending..." : "Send Message"}
+</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
       {/* FOOTER */}
       <footer className="px-lg-5 py-4">
         <div className="container m-4">
@@ -1036,6 +1641,7 @@ const Homepage = () => {
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 };

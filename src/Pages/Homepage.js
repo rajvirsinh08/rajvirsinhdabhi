@@ -24,6 +24,10 @@ import Redux from "../Assets/images/Redux.png";
 import Mui from "../Assets/images/Mui.png";
 import Rajvirsinh_Dabhi_Resume from "../Assets/pdf/Rajvirsinh Dabhi Resume1.pdf";
 import softwareengsimulationcerti from "../Assets/images/Software Engineering Job Simulation Certi_page-0001.jpg";
+import Typescript from "../Assets/images/typescript.png";
+import Nextjs from "../Assets/images/next.png";
+import Github from "../Assets/images/github.png";
+import jwttoken from "../Assets/images/jwttoken.png";
 
 // NO LONGER NEEDED if using Bootstrap's native ScrollSpy
 // import ScrollSpy from 'react-scrollspy';
@@ -690,121 +694,185 @@ height: "clamp(220px, 60vw, 300px)",
       {/* //HOME SECTION */}
 
       {/* SERVICES */}
-      <section id="skills" className="full-hight px-lg-5">
-        <div className="container">
-          <div className="row p-4">
-            <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
-              <h1>My Skills</h1>
-            </div>
+   <section id="skills" className="full-hight px-lg-5">
+  <div className="container">
+    
+    {/* SECTION HEADER */}
+   <div className="row p-4">
+  <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
+
+    <h6
+      style={{
+        color: "#598565",
+        letterSpacing: "2px",
+        fontSize: "14px",
+        marginBottom: "10px",
+      }}
+    >
+      TECHNICAL EXPERTISE
+    </h6>
+
+    <h1
+      style={{
+        color: "#ffffff",
+        fontWeight: 800,
+        marginBottom: "15px",
+      }}
+    >
+      Technology Stack
+    </h1>
+
+    <p
+      style={{
+        color: "#A6B0A8",
+        fontSize: "15px",
+        lineHeight: "1.8",
+        maxWidth: "600px",
+        margin: "0 auto",
+      }}
+    >
+      A structured stack of modern technologies used to build scalable,
+      secure, and high-performance full-stack web applications.
+    </p>
+
+  </div>
+</div>
+
+    <div className="row gy-4">
+
+      {/* ================= FRONTEND ================= */}
+
+      {/* HTML */}
+      <div className="col-6 col-md-3" data-aos="fade-up">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Html} alt="HTML" />
           </div>
-
-          <div className="row gy-4">
-            {/* ReactJS */}
-            <div className="col-6 col-md-3" data-aos="fade-up">
-              <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
-                <div className="centered-img-container">
-                  <img src={Reactjs} alt="ReactJS" />
-                </div>
-                <h5 className="mt-3">ReactJS</h5>
-              </div>
-            </div>
-
-            {/* NodeJS */}
-            <div
-              className="col-6 col-md-3"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
-                <div className="centered-img-container">
-                  <img src={Nodejs} alt="NodeJS" />
-                </div>
-                <h5 className="mt-3">NodeJS</h5>
-              </div>
-            </div>
-
-            {/* ExpressJS */}
-            <div
-              className="col-6 col-md-3"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
-                <div className="centered-img-container">
-                  <img src={ExpressJS} alt="ExpressJS" />
-                </div>
-                <h5 className="mt-3">ExpressJS</h5>
-              </div>
-            </div>
-
-            {/* MongoDB */}
-            <div
-              className="col-6 col-md-3"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
-                <div className="centered-img-container">
-                  <img src={Mongodb} alt="MongoDB" />
-                </div>
-                <h5 className="mt-3">MongoDB</h5>
-              </div>
-            </div>
-
-            {/* HTML */}
-            <div className="col-6 col-md-3" data-aos="fade-up">
-              <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
-                <div className="centered-img-container">
-                  <img src={Html} alt="HTML" />
-                </div>
-                <h5 className="mt-3">HTML</h5>
-              </div>
-            </div>
-
-            {/* CSS */}
-            <div
-              className="col-6 col-md-3"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
-                <div className="centered-img-container">
-                  <img src={Css} alt="CSS" />
-                </div>
-                <h5 className="mt-3">CSS</h5>
-              </div>
-            </div>
-
-            {/* Redux */}
-            <div
-              className="col-6 col-md-3"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
-                <div className="centered-img-container">
-                  <img src={Redux} alt="Redux" />
-                </div>
-                <h5 className="mt-3">Redux</h5>
-              </div>
-            </div>
-
-            {/* MUI */}
-            <div
-              className="col-6 col-md-3"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
-                <div className="centered-img-container">
-                  <img src={Mui} alt="MUI" />
-                </div>
-                <h5 className="mt-3">MUI</h5>
-              </div>
-            </div>
-          </div>
+          <h5 className="mt-3">HTML</h5>
         </div>
-      </section>
+      </div>
+
+      {/* CSS */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Css} alt="CSS" />
+          </div>
+          <h5 className="mt-3">CSS</h5>
+        </div>
+      </div>
+
+      {/* ReactJS */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Reactjs} alt="ReactJS" />
+          </div>
+          <h5 className="mt-3">ReactJS</h5>
+        </div>
+      </div>
+
+      {/* Redux */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Redux} alt="Redux" />
+          </div>
+          <h5 className="mt-3">Redux</h5>
+        </div>
+      </div>
+
+      {/* MUI */}
+      <div className="col-6 col-md-3" data-aos="fade-up">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Mui} alt="MUI" />
+          </div>
+          <h5 className="mt-3">MUI</h5>
+        </div>
+      </div>
+
+      {/* NextJS */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Nextjs} alt="NextJS" />
+          </div>
+          <h5 className="mt-3">NextJS</h5>
+        </div>
+      </div>
+
+      {/* TypeScript */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Typescript} alt="TypeScript" />
+          </div>
+          <h5 className="mt-3">TypeScript</h5>
+        </div>
+      </div>
+
+      {/* ================= BACKEND ================= */}
+
+      {/* NodeJS */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Nodejs} alt="NodeJS" />
+          </div>
+          <h5 className="mt-3">NodeJS</h5>
+        </div>
+      </div>
+
+      {/* ExpressJS */}
+      <div className="col-6 col-md-3" data-aos="fade-up">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={ExpressJS} alt="ExpressJS" />
+          </div>
+          <h5 className="mt-3">ExpressJS</h5>
+        </div>
+      </div>
+
+      {/* ================= DATABASE ================= */}
+
+      {/* MongoDB */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Mongodb} alt="MongoDB" />
+          </div>
+          <h5 className="mt-3">MongoDB</h5>
+        </div>
+      </div>
+
+      {/* ================= AUTH ================= */}
+
+      {/* JWT */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={jwttoken} alt="JWT Authentication" />
+          </div>
+          <h5 className="mt-3">JWT</h5>
+        </div>
+      </div>
+
+      {/* ================= TOOLS ================= */}
+
+      {/* Git & GitHub */}
+      <div className="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div className="bg-base p-4 rounded-4 shadow-effect text-center skill-card">
+          <div className="centered-img-container">
+            <img src={Github} alt="Git & GitHub" />
+          </div>
+          <h5 className="mt-3">Git & GitHub</h5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
       {/* ADDITIONAL TECHNOLOGIES SECTION */}
       {/* ADDITIONAL TECHNOLOGIES – PREMIUM SECTION */}
       <section

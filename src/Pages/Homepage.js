@@ -7,7 +7,6 @@ import "../Assets/css/aos.css"; // Re-import AOS CSS for clarity in React contex
 import "../Assets/css/line-awesome.min.css"; // Import Line Awesome CSS
 import "../Assets/css/style.css"; // Import your custom style.css
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // Import images
 import profilePic from "../Assets/images/Rajvirsinh Dabhi.jpg";

@@ -9,7 +9,7 @@ import "../Assets/css/style.css"; // Import your custom style.css
 import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 // Import images
-import profilePic from "../Assets/images/Rajvirsinh Dabhi.jpg";
+import profilePic from "../Assets/images/Rajvirsinh Dabhi.jpeg";
 import project1 from "../Assets/images/Carvistahomepage.png";
 import PortfolioHomepage from "../Assets/images/PortfolioHomepage.png";
 import image from "../Assets/images/image.png";
@@ -1013,19 +1013,7 @@ height: "clamp(220px, 60vw, 300px)",
               />
             </div>
 
-            {/* ================== PROJECT 2 ================== */}
-            <div
-              className="col-12 col-md-10 col-lg-8 mx-auto"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <ProjectCard
-                image={PortfolioHomepage}
-                title="Portfolio Intro – Developer Profile Website"
-                description={`Designed and deployed a professional developer introduction website with a sleek UI, responsive design, and dark theme. Showcases key skills, contact info, and resume with animated transitions. Built using React and styled with modern CSS.`}
-                link="https://rajvirintro.vercel.app/"
-              />
-            </div>
+          
 
             {/* ================== PROJECT 3 ================== */}
             <div

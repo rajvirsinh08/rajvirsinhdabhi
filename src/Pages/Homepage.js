@@ -9,7 +9,7 @@ import "../Assets/css/style.css"; // Import your custom style.css
 import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 // Import images
-import profilePic from "../Assets/images/Rajvirsinh.jpeg";
+import profilePic from "../Assets/images/Rajvir.png";
 import project1 from "../Assets/images/Carvistahomepage.png";
 import PortfolioHomepage from "../Assets/images/PortfolioHomepage.png";
 import image from "../Assets/images/image.png";

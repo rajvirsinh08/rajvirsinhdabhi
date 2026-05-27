@@ -335,7 +335,15 @@ const handleSubmit = async (e) => {
           className="d-none d-lg-flex"
           style={{ gap: "35px", alignItems: "center" }}
         >
-          {["Home", "Skills", "Work", "About", "Certifications", "Contact"].map(
+          {[
+  "Home",
+  "Services",
+  "Skills",
+  "Work",
+  "About",
+  "Certifications",
+  "Contact",
+].map(
             (item, index) => {
               const sectionId = item.toLowerCase();
 
@@ -523,8 +531,10 @@ const handleSubmit = async (e) => {
                   animation: "slideUp 1.2s ease",
                 }}
               >
-                I'm Rajvirsinh Dabhi, a MERN stack developer building secure,
-                high-performance web applications with modern user interfaces.
+               I'm Rajvirsinh Dabhi, a freelance MERN Stack Developer
+building secure, scalable, and high-performance web &
+mobile applications using React.js, Next.js, Node.js,
+MongoDB, Express.js, REST APIs, and React Native.
               </p>
 
               {/* Skill Tags */}
@@ -566,7 +576,7 @@ className="mt-4 d-flex flex-nowrap gap-2 justify-content-center justify-content-
   >
     <img
       src="/heroimg.png"
-      alt="Hero Visual"
+     alt="Rajvirsinh Dabhi MERN Stack Developer"
       style={{
         width: "280px",
         height: "280px",
@@ -691,7 +701,177 @@ height: "clamp(220px, 60vw, 300px)",
       </section>
 
       {/* //HOME SECTION */}
+{/* ================= SEO SERVICES SECTION ================= */}
 
+<section
+  id="services"
+  style={{
+    padding: "120px 20px",
+    position: "relative",
+    overflow: "hidden",
+  }}
+>
+  <div className="container">
+
+    {/* HEADER */}
+    <div className="row mb-5">
+      <div
+        className="col-lg-8 mx-auto text-center"
+        data-aos="fade-up"
+      >
+        <h6
+          style={{
+            color: "#598565",
+            letterSpacing: "2px",
+            marginBottom: "15px",
+            fontSize: "14px",
+          }}
+        >
+          SERVICES
+        </h6>
+
+        <h2
+          style={{
+            color: "#ffffff",
+            fontWeight: 800,
+            fontSize: "clamp(2rem, 5vw, 3rem)",
+            marginBottom: "20px",
+          }}
+        >
+         Full Stack Web & App Development Services
+        </h2>
+
+        <p
+          style={{
+            color: "#A6B0A8",
+            lineHeight: "1.9",
+            fontSize: "16px",
+            maxWidth: "850px",
+            margin: "0 auto",
+          }}
+        >
+         I am Rajvirsinh Dabhi, a freelance MERN Stack Developer
+specializing in React.js, Next.js, Node.js, MongoDB,
+React Native, REST APIs, and full stack web development.
+        </p>
+
+        <p
+          style={{
+            color: "#A6B0A8",
+            lineHeight: "1.9",
+            fontSize: "16px",
+            marginTop: "18px",
+            maxWidth: "850px",
+            marginInline: "auto",
+          }}
+        >
+          I build scalable websites, admin panels, ecommerce
+          platforms, mobile applications, and custom business
+          solutions for startups and companies.
+        </p>
+      </div>
+    </div>
+
+    {/* SERVICES GRID */}
+    <div className="row g-4 mt-5">
+
+      {[
+        {
+          title: "Website Development",
+          desc: "Modern responsive business and portfolio websites using React.js and Next.js.",
+        },
+        {
+          title: "MERN Stack Development",
+          desc: "Full stack web applications using MongoDB, Express.js, React.js, and Node.js.",
+        },
+        {
+          title: "React.js Development",
+          desc: "Interactive frontend UI development with scalable React architecture.",
+        },
+        {
+          title: "Next.js Development",
+          desc: "SEO optimized and high performance Next.js applications.",
+        },
+        {
+          title: "Node.js Backend",
+          desc: "Secure backend APIs, authentication systems, and scalable server architecture.",
+        },
+        {
+          title: "REST API Development",
+          desc: "Professional API development and third-party integrations.",
+        },
+        {
+          title: "React Native Apps",
+          desc: "Cross-platform Android and iOS mobile application development.",
+        },
+        {
+          title: "Admin Dashboard",
+          desc: "Advanced admin panels with analytics, CRUD operations, and role management.",
+        },
+        {
+          title: "Ecommerce Websites",
+          desc: "Custom ecommerce platforms with payment integration and dashboards.",
+        },
+      ].map((service, index) => (
+        <div
+          key={index}
+          className="col-md-6 col-lg-4"
+          data-aos="fade-up"
+          data-aos-delay={index * 80}
+        >
+          <div
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "22px",
+              padding: "35px",
+              height: "100%",
+              transition: "all 0.4s ease",
+              backdropFilter: "blur(12px)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(-10px)";
+              e.currentTarget.style.borderColor =
+                "#598565";
+              e.currentTarget.style.boxShadow =
+                "0 20px 50px rgba(89,133,101,0.25)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(0)";
+              e.currentTarget.style.borderColor =
+                "rgba(255,255,255,0.08)";
+              e.currentTarget.style.boxShadow =
+                "none";
+            }}
+          >
+            <h4
+              style={{
+                color: "#ffffff",
+                fontWeight: 700,
+                marginBottom: "18px",
+              }}
+            >
+              {service.title}
+            </h4>
+
+            <p
+              style={{
+                color: "#A6B0A8",
+                lineHeight: "1.8",
+                fontSize: "15px",
+              }}
+            >
+              {service.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
       {/* SERVICES */}
    <section id="skills" className="full-hight px-lg-5">
   <div className="container">
@@ -1053,7 +1233,7 @@ height: "clamp(220px, 60vw, 300px)",
 >
         <img
           src={profilePic}
-          alt="Rajvirsinh Dabhi"
+         alt="Rajvirsinh Dabhi React Developer Portfolio"
           style={{
             width: "180px",
             height: "180px",
@@ -1623,7 +1803,25 @@ height: "clamp(220px, 60vw, 300px)",
         <div className="container m-4">
           <div className="row justify-content-between gy-4">
             <div className="col-auto mb-0">
-              <p>Designed By Rajvirsinh Dabhi</p>
+             <div>
+  <p style={{ marginBottom: "6px" }}>
+    Designed By Rajvirsinh Dabhi
+  </p>
+
+  <p
+    style={{
+      fontSize: "13px",
+      color: "#A6B0A8",
+      lineHeight: "1.7",
+      maxWidth: "500px",
+    }}
+  >
+    Rajvirsinh Dabhi (Rajvir) is a MERN Stack Developer
+    specializing in React.js, Next.js, Node.js, MongoDB,
+    React Native, REST APIs, web development,
+    and mobile app development.
+  </p>
+</div>
             </div>
             <div className="social-icons col-auto">
               <a

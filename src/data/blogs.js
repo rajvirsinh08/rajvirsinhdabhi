@@ -993,7 +993,7 @@ Building REST APIs with Node.js and Express.js is a core full-stack skill. By fo
     readTime: "6 min read",
     date: "May 2026",
     image:
-      "https://images.unsplash.com/photo-1544383835-bda2bc66a55d",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDkhlkd4pHdfaY-t65Zz1UUK2rz171vYtmYw&s",
 
     description:
       "Understand the differences between MongoDB and MySQL and choose the best database for your web applications.",
@@ -2666,7 +2666,7 @@ Follow these practices and your React.js API integration will be clean, performa
     readTime: "9 min read",
     date: "May 2026",
     image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "https://bs-uploads.toptal.io/blackfish-uploads/components/open_graph_image/11305958/og_image/optimized/0821-RoleBasedAuthFirebase-Luke_Social-0ec228e955294dc10aca08ce13328e4d.png",
 
     description:
       "Implement admin, user, and role-based authorization systems securely in MERN Stack applications.",

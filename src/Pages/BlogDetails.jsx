@@ -1,11 +1,14 @@
 import { useParams, Link } from "react-router-dom";
 import blogs from "../data/blogs";
 import Rajvirsinh_Dabhi_Resume from "../Assets/pdf/Rajvirsinh Dabhi Resume1.pdf";
-// import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 function BlogDetails() {
   const { slug } = useParams();
 
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
   const blog = blogs.find((item) => item.slug === slug);
 
   if (!blog) {

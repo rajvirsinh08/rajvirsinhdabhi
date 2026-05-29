@@ -119,15 +119,16 @@ const handleSubmit = async (e) => {
   }
 };
   useEffect(() => {
-    const sections = [
-      "home",
-      "skills",
-      "work",
-      "about",
-      "certifications",
-      "blog",
-      "contact",
-    ];
+  const sections = [
+  "home",
+  "services",
+  "skills",
+  "work",
+  "about",
+  "certifications",
+  "blogs",
+  "contact",
+];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 150;
@@ -437,12 +438,27 @@ const handleSubmit = async (e) => {
             border: "1px solid rgba(255,255,255,0.06)",
           }}
         >
-          {["Home", "Skills", "Work", "About", "Certifications", "Contact"].map(
+          {["Home","Services", "Skills", "Work", "About", "Certifications","Blogs", "Contact"].map(
             (item, index) => (
               <a
                 key={index}
                 href={`#${item.toLowerCase()}`}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+  e.preventDefault();
+
+  const section = document.getElementById(
+    item.toLowerCase()
+  );
+
+  if (section) {
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
+  setMenuOpen(false);
+}}
                 style={{
                   color: "#9BA3A7",
                   fontSize: "15px",

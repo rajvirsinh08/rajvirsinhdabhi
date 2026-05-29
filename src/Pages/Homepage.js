@@ -27,7 +27,8 @@ import Typescript from "../Assets/images/typescript.png";
 import Nextjs from "../Assets/images/next.png";
 import Github from "../Assets/images/github.png";
 import jwttoken from "../Assets/images/jwttoken.png";
-
+import { Link } from "react-router-dom";
+import blogs from "../data/blogs";
 // NO LONGER NEEDED if using Bootstrap's native ScrollSpy
 // import ScrollSpy from 'react-scrollspy';
 
@@ -37,7 +38,7 @@ const Homepage = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [openDropdown, setOpenDropdown] = useState(false);
 const [selectedProject, setSelectedProject] = useState("");
-const [selectedBlog, setSelectedBlog] = useState(null);
+// const [selectedBlog, setSelectedBlog] = useState(null);
 const [formData, setFormData] = useState({
   name: "",
   email: "",
@@ -50,426 +51,7 @@ const [popup, setPopup] = useState({
   message: "",
 });
 const [loading, setLoading] = useState(false);
-const blogs = [
-  {
-    id: 1,
-    title: "React vs Next.js – Which One Should You Learn in 2026?",
-    slug: "react-vs-nextjs-which-one-should-you-learn-2026",
-    category: "React",
-    readTime: "8 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
 
-    description:
-      "Compare React.js and Next.js, their features, performance, SEO capabilities, and which one is better for modern web development.",
-
-    content: `
-React.js and Next.js are two of the most popular technologies used for modern frontend development.
-
-React.js is a JavaScript library used for building dynamic user interfaces using reusable components.
-
-Next.js is a React framework that adds powerful features like:
-• Server-side rendering
-• SEO optimization
-• File-based routing
-• API routes
-• Performance optimization
-
-Benefits of React.js:
-• Flexible architecture
-• Large ecosystem
-• Huge community support
-• Reusable components
-
-Benefits of Next.js:
-• Better SEO
-• Faster page loading
-• Built-in routing
-• Optimized production performance
-
-If you want flexibility and SPA applications, React.js is excellent.
-
-If you want production-ready SEO optimized applications, Next.js is the better choice.
-`,
-  },
-
-  {
-    id: 2,
-    title: "Complete MERN Stack Authentication Guide Using JWT",
-    slug: "complete-mern-stack-authentication-guide-jwt",
-    category: "MERN",
-    readTime: "10 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
-
-    description:
-      "Learn how to implement secure JWT authentication in MERN Stack applications with access tokens and protected routes.",
-
-    content: `
-JWT Authentication is one of the most secure authentication systems used in MERN Stack applications.
-
-A complete authentication flow includes:
-• User registration
-• Login system
-• Password hashing
-• JWT token generation
-• Protected routes
-• Role-based authorization
-
-Technologies Used:
-• React.js
-• Node.js
-• Express.js
-• MongoDB
-• JWT
-• bcrypt.js
-
-Authentication Process:
-1. User logs in
-2. Backend validates credentials
-3. JWT token is generated
-4. Token stored securely
-5. Protected APIs verify token
-
-Best Practices:
-• Use bcrypt for hashing
-• Store tokens securely
-• Use middleware protection
-• Implement token expiration
-• Validate user roles
-`,
-  },
-
-  {
-    id: 3,
-    title: "How to Build REST APIs in Node.js and Express.js",
-    slug: "build-rest-apis-nodejs-expressjs",
-    category: "Node.js",
-    readTime: "7 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
-
-    description:
-      "Step-by-step guide to building scalable REST APIs using Node.js, Express.js, middleware, and MongoDB.",
-
-    content: `
-REST APIs are the backbone of modern web applications.
-
-Using Node.js and Express.js you can build scalable backend systems for:
-• Web applications
-• Mobile apps
-• Dashboards
-• Ecommerce platforms
-
-Core API Components:
-• Routes
-• Controllers
-• Middleware
-• Database Models
-• Authentication
-
-Steps to Build APIs:
-1. Setup Express server
-2. Connect MongoDB
-3. Create routes
-4. Build controllers
-5. Add middleware
-6. Implement authentication
-7. Test APIs
-
-Best Practices:
-• Use MVC architecture
-• Validate requests
-• Handle errors properly
-• Secure endpoints
-• Use async/await
-`,
-  },
-
-  {
-    id: 4,
-    title: "MongoDB vs MySQL for MERN Applications",
-    slug: "mongodb-vs-mysql-for-mern-applications",
-    category: "Database",
-    readTime: "6 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1544383835-bda2bc66a55d",
-
-    description:
-      "Understand the differences between MongoDB and MySQL and choose the best database for your web applications.",
-
-    content: `
-MongoDB and MySQL are both powerful databases but used for different requirements.
-
-MongoDB:
-• NoSQL database
-• Flexible schema
-• JSON-based documents
-• Ideal for MERN Stack
-
-MySQL:
-• Relational database
-• Structured tables
-• SQL queries
-• Strong relationships
-
-MongoDB Advantages:
-• Faster development
-• Flexible structure
-• Better scalability
-• Great for dynamic applications
-
-MySQL Advantages:
-• Strong consistency
-• Relational data handling
-• Mature ecosystem
-
-For MERN Stack applications, MongoDB is generally preferred because of its JSON document structure.
-`,
-  },
-
-  {
-    id: 5,
-    title: "How to Deploy a MERN Stack App on Vercel",
-    slug: "deploy-mern-stack-app-on-vercel",
-    category: "Deployment",
-    readTime: "5 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
-
-    description:
-      "Learn how to deploy frontend and backend MERN applications on Vercel with environment variables and production setup.",
-
-    content: `
-Deployment is an important part of production-ready applications.
-
-Vercel provides fast and scalable hosting for frontend applications.
-
-Deployment Steps:
-1. Push project to GitHub
-2. Connect GitHub with Vercel
-3. Configure environment variables
-4. Deploy frontend
-5. Deploy backend APIs
-
-Benefits of Vercel:
-• Fast deployment
-• Global CDN
-• Free SSL
-• Automatic builds
-• Git integration
-
-Best Practices:
-• Use environment variables
-• Optimize images
-• Enable SEO
-• Use production APIs
-• Monitor deployments
-`,
-  },
-
-  {
-    id: 6,
-    title: "Building a Full Stack Admin Dashboard Using React and Node.js",
-    slug: "full-stack-admin-dashboard-react-nodejs",
-    category: "Full Stack",
-    readTime: "9 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-
-    description:
-      "Build a professional admin dashboard using React.js, Node.js, charts, authentication, and CRUD operations.",
-
-    content: `
-Admin dashboards are essential for managing applications and business systems.
-
-A professional dashboard should include:
-• Authentication
-• Analytics
-• Charts
-• CRUD operations
-• Filters
-• Responsive UI
-
-Frontend Technologies:
-• React.js
-• Material UI
-• Charts
-• Redux
-
-Backend Technologies:
-• Node.js
-• Express.js
-• MongoDB
-
-Dashboard Features:
-• User management
-• Data visualization
-• Role-based access
-• Reports
-• API integrations
-`,
-  },
-
-  {
-    id: 7,
-    title: "React Native vs Flutter – Which is Better?",
-    slug: "react-native-vs-flutter",
-    category: "Mobile Development",
-    readTime: "8 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
-
-    description:
-      "Compare React Native and Flutter for cross-platform mobile app development and performance.",
-
-    content: `
-React Native and Flutter are popular frameworks for cross-platform mobile apps.
-
-React Native:
-• Uses JavaScript
-• Built by Meta
-• Reusable React skills
-• Large ecosystem
-
-Flutter:
-• Uses Dart
-• Built by Google
-• High UI customization
-• Fast rendering
-
-React Native Advantages:
-• Faster learning for React developers
-• Huge community
-• Native integrations
-
-Flutter Advantages:
-• Better animations
-• Consistent UI
-• Excellent performance
-
-The choice depends on your project requirements and developer experience.
-`,
-  },
-
-  {
-    id: 8,
-    title: "How to Structure a Scalable MERN Stack Project",
-    slug: "scalable-mern-stack-project-structure",
-    category: "Architecture",
-    readTime: "7 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
-
-    description:
-      "Learn the best folder structure and architecture practices for scalable MERN Stack applications.",
-
-    content: `
-A proper project structure improves scalability and maintainability.
-
-Recommended Backend Structure:
-• routes/
-• controllers/
-• models/
-• middleware/
-• utils/
-
-Recommended Frontend Structure:
-• components/
-• pages/
-• services/
-• hooks/
-• redux/
-
-Benefits:
-• Better code organization
-• Easy maintenance
-• Scalability
-• Team collaboration
-• Faster development
-`,
-  },
-
-  {
-    id: 9,
-    title: "Best Practices for API Integration in React.js",
-    slug: "api-integration-best-practices-reactjs",
-    category: "React",
-    readTime: "6 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692",
-
-    description:
-      "Explore modern API integration techniques in React.js using Axios, async/await, interceptors, and hooks.",
-
-    content: `
-API integration is essential for dynamic React applications.
-
-Popular API Libraries:
-• Axios
-• Fetch API
-
-Best Practices:
-• Use interceptors
-• Handle loading states
-• Handle errors properly
-• Use async/await
-• Create reusable services
-
-Benefits:
-• Better maintainability
-• Cleaner code
-• Improved scalability
-• Easier debugging
-`,
-  },
-
-  {
-    id: 10,
-    title: "Role Based Authentication in MERN Stack",
-    slug: "role-based-authentication-mern-stack",
-    category: "Authentication",
-    readTime: "9 min read",
-    date: "May 2026",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475",
-
-    description:
-      "Implement admin, user, and role-based authorization systems securely in MERN Stack applications.",
-
-    content: `
-Role-based authentication allows different users to access different features.
-
-Common Roles:
-• Admin
-• User
-• Moderator
-
-Implementation Steps:
-1. Add role field in database
-2. Generate JWT token
-3. Verify role using middleware
-4. Protect routes
-
-Benefits:
-• Better security
-• Controlled access
-• Scalable permissions
-• Enterprise-level architecture
-
-Role-based systems are essential for dashboards, admin panels, and business applications.
-`,
-  },
-];
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -543,6 +125,7 @@ const handleSubmit = async (e) => {
       "work",
       "about",
       "certifications",
+      "blog",
       "contact",
     ];
 
@@ -763,6 +346,7 @@ const handleSubmit = async (e) => {
   "Work",
   "About",
   "Certifications",
+  "Blogs",
   "Contact",
 ].map(
             (item, index) => {
@@ -2054,23 +1638,16 @@ React Native, REST APIs, and full stack web development.
               </p>
 
               {/* BUTTON */}
-            <button
-  onClick={() => setSelectedBlog(blog)}
+        <Link
+  to={`/blog/${blog.slug}`}
   style={{
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "8px",
     color: "#598565",
-    background: "transparent",
-    border: "none",
-    fontWeight: 600,
-    cursor: "pointer",
-    transition: "all 0.3s ease",
+    textDecoration: "none",
+    fontWeight: 600
   }}
 >
-  Read More
-  <span>→</span>
-</button>
+  Read More →
+</Link>
             </div>
           </div>
         </div>
@@ -2079,132 +1656,7 @@ React Native, REST APIs, and full stack web development.
     </div>
   </div>
 </section>
-{/* BLOG MODAL */}
 
-{selectedBlog && (
-  <div
-    className="modal fade show d-block"
-    style={{
-      background: "rgba(0,0,0,0.85)",
-      backdropFilter: "blur(8px)",
-      zIndex: 9999,
-    }}
-    onClick={() => setSelectedBlog(null)}
-  >
-    <div
-      className="modal-dialog modal-dialog-centered modal-xl"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div
-        className="modal-content"
-        style={{
-          background: "#0f1720",
-          borderRadius: "24px",
-          border: "1px solid rgba(255,255,255,0.08)",
-          overflow: "hidden",
-        }}
-      >
-
-        {/* IMAGE */}
-        <div
-          style={{
-            height: "350px",
-            overflow: "hidden",
-            position: "relative",
-          }}
-        >
-          <img
-            src={`${selectedBlog.image}?auto=format&fit=crop&w=1200&q=80`}
-            alt={selectedBlog.title}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
-
-          <button
-            onClick={() => setSelectedBlog(null)}
-            style={{
-              position: "absolute",
-              top: "20px",
-              right: "20px",
-              width: "45px",
-              height: "45px",
-              borderRadius: "50%",
-              border: "none",
-              background: "rgba(0,0,0,0.6)",
-              color: "#fff",
-              fontSize: "20px",
-              cursor: "pointer",
-            }}
-          >
-            ✕
-          </button>
-        </div>
-
-        {/* CONTENT */}
-        <div style={{ padding: "40px" }}>
-
-          {/* CATEGORY */}
-          <div
-            style={{
-              display: "inline-block",
-              background: "#598565",
-              color: "#fff",
-              padding: "8px 18px",
-              borderRadius: "30px",
-              fontSize: "13px",
-              fontWeight: 600,
-              marginBottom: "20px",
-            }}
-          >
-            {selectedBlog.category}
-          </div>
-
-          {/* TITLE */}
-          <h2
-            style={{
-              color: "#ffffff",
-              fontWeight: 800,
-              lineHeight: "1.4",
-              marginBottom: "18px",
-            }}
-          >
-            {selectedBlog.title}
-          </h2>
-
-          {/* META */}
-          <div
-            style={{
-              display: "flex",
-              gap: "15px",
-              color: "#8FA39B",
-              marginBottom: "30px",
-              fontSize: "14px",
-            }}
-          >
-            <span>{selectedBlog.date}</span>
-            <span>•</span>
-            <span>{selectedBlog.readTime}</span>
-          </div>
-
-          {/* DESCRIPTION */}
-          <p
-            style={{
-              color: "#A6B0A8",
-              lineHeight: "2",
-              fontSize: "16px",
-              whiteSpace: "pre-line",
-            }}
-          >
-            {selectedBlog.content}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-)}
       {/* CONTACT */}
  {/* CONTACT SECTION */}
 <section

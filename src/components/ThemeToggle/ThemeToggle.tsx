@@ -1,5 +1,4 @@
 import React from "react";
-import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../../hooks/useTheme";
 
 interface ThemeToggleProps {
@@ -53,7 +52,17 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({
           "var(--shadow-md)";
       }}
     >
-      {isDark ? <FiSun size={22} /> : <FiMoon size={22} />}
+      {isDark ? (
+        <i
+          className="las la-sun"
+          style={{ fontSize: "22px" }}
+        />
+      ) : (
+        <i
+          className="las la-moon"
+          style={{ fontSize: "22px" }}
+        />
+      )}
 
       <span className="visually-hidden">{label}</span>
     </button>
@@ -65,7 +74,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({
         style={{
           position: "fixed",
           bottom: "70px",
-          left: "40px",
+          left: "35px",
           zIndex: 9999,
           display: "flex",
           flexDirection: "column",
@@ -73,20 +82,18 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({
           gap: "8px",
         }}
       >
-        {/* Desktop Only Label */}
         {!isMobile && (
           <div
             style={{
               background: "var(--color-card)",
               color: "var(--color-text-heading)",
               border: "1px solid var(--color-border)",
-              padding: "8px 12px",
-              borderRadius: "10px",
+              padding: "8px 14px",
+              borderRadius: "12px",
               fontSize: "12px",
               fontWeight: 600,
               whiteSpace: "nowrap",
               boxShadow: "var(--shadow-md)",
-              position: "relative",
             }}
           >
             <span
@@ -98,31 +105,22 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({
             >
               {isDark ? (
                 <>
-                  <FiSun size={14} />
+                  <i
+                    className="las la-sun"
+                    style={{ fontSize: "14px" }}
+                  />
                   Light Theme
                 </>
               ) : (
                 <>
-                  <FiMoon size={14} />
+                  <i
+                    className="las la-moon"
+                    style={{ fontSize: "14px" }}
+                  />
                   Dark Theme
                 </>
               )}
             </span>
-
-            {/* Arrow */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: "-6px",
-                left: "50%",
-                transform: "translateX(-50%) rotate(45deg)",
-                width: "12px",
-                height: "12px",
-                background: "var(--color-card)",
-                borderRight: "1px solid var(--color-border)",
-                borderBottom: "1px solid var(--color-border)",
-              }}
-            />
           </div>
         )}
 

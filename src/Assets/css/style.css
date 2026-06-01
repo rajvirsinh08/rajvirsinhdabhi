@@ -1,27 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap");
 
-/* :root {
-  --color-body: #b6cbce;
-  --color-heading: #eef3db;
-  --color-base:  #2C3539;
-  --color-base2: #080808;
-  --color-brand:#E6E6FA;
-  --color-brand2: #46540f;
-  --sidbar-width: 240px;
-  --font-base: "Kanit";
-} */
+/* Theme tokens are injected by ThemeProvider — see src/theme/theme.ts */
 :root {
-  --color-body: #A6B0A8; /* Muted grey-green for main text */
-  --color-heading: #F0F2ED; /* Soft white for headings */
-  --color-base: #262626; /* Dark charcoal for main background */
-  --color-base2: #1A1A1A; /* Even darker charcoal for accents/sidebar */
-  --color-brand: #598565; /* Muted forest green for brand elements */
-  --color-brand2: #3D6B49; /* Darker forest green for secondary branding */
   --sidbar-width: 240px;
-  --font-base: "Kanit";
+  --font-base: "Kanit", sans-serif;
+  /* Fallbacks before React hydrates (dark default) */
+  --color-body: #A6B0A8;
+  --color-heading: #F0F2ED;
+  --color-base: #262626;
+  --color-base2: #1A1A1A;
+  --color-brand: #598565;
+  --color-brand2: #3D6B49;
+  --color-background: #0d1117;
+  --color-primary: #598565;
+  --color-text-secondary: #A6B0A8;
+  --color-text-heading: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --gradient-primary: linear-gradient(90deg, #598565, #8FBF9F);
+  --shadow-brand: 0 5px 15px rgba(89, 133, 101, 0.25);
 }
+
 body {
-  background-color: var(--color-base2);
+  background-color: var(--color-background);
   color: var(--color-body);
   font-family: var(--font-base);
 }
@@ -64,7 +64,7 @@ img {
 .navbar .nav-link {
   font-weight: 700 !important;
   text-transform: uppercase;
-  color: white;
+  color: var(--color-text-heading);
 }
 .navbar .nav-link:hover {
   color: var(--color-brand);
@@ -106,7 +106,7 @@ img {
   justify-content: center;
   padding-top: 80px;
   padding-bottom: 80px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.355);
+  border-bottom: 2px solid var(--color-border);
 }
 
 .bg-base {
@@ -239,7 +239,7 @@ img {
   font-size: 15px;
   letter-spacing: 0.5px;
   text-decoration: none;
-  box-shadow: 0 5px 15px rgba(89, 133, 101, 0.2); /* Green-ish shadow */
+  box-shadow: var(--shadow-sm);
   z-index: 999;
   transition: all 0.3s ease;
 }
@@ -247,7 +247,7 @@ img {
 .floating-resume-btn:hover {
   background-color: var(--color-brand); /* Brand green on hover */
   color: var(--color-heading); /* Light text on hover */
-  box-shadow: 0 8px 18px rgba(89, 133, 101, 0.3);
+  box-shadow: var(--shadow-brand-hover);
 }
 
 @media (max-width: 422px) {

@@ -3,6 +3,7 @@ import blogs from "../data/blogs";
 import Rajvirsinh_Dabhi_Resume from "../Assets/pdf/Rajvirsinh Dabhi Resume1.pdf";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import ThemeToggle from "../components/ThemeToggle/ThemeToggle";
 function BlogDetails() {
   const { slug } = useParams();
 
@@ -16,8 +17,8 @@ function BlogDetails() {
       <div
         style={{
           minHeight: "100vh",
-          background: "#0d1117",
-          color: "#fff",
+          background: "var(--color-background)",
+          color: "var(--color-text-heading)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -101,7 +102,7 @@ function BlogDetails() {
 </Helmet>
     <div
       style={{
-        background: "#0d1117",
+        background: "var(--color-background)",
         minHeight: "100vh",
         position: "relative",
         overflow: "hidden",
@@ -115,9 +116,9 @@ function BlogDetails() {
           right: 0,
           width: "60%",
           height: "100vh",
-          background: "linear-gradient(135deg, #598565, #3D6B49)",
+          background: "var(--gradient-hero)",
           clipPath: "polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          opacity: 0.08,
+          opacity: "var(--global-diagonal-opacity)",
           zIndex: 0,
           pointerEvents: "none",
         }}
@@ -130,7 +131,7 @@ function BlogDetails() {
           top: "15px",
           left: "50%",
           transform: "translateX(-50%)",
-          background: "#0f1720",
+          background: "var(--color-navbar)",
           borderRadius: "50px",
           padding: "12px 25px",
           width: "90%",
@@ -138,9 +139,9 @@ function BlogDetails() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
+          boxShadow: "var(--shadow-navbar)",
           zIndex: 1000,
-          border: "1px solid rgba(255,255,255,0.06)",
+          border: "1px solid var(--color-border-subtle)",
         }}
       >
         <Link
@@ -152,25 +153,24 @@ function BlogDetails() {
             letterSpacing: "1px",
           }}
         >
-          <span style={{ color: "#ffffff" }}>RAJVIRSINH </span>
-          <span style={{ color: "#598565" }}>DABHI</span>
+          <span style={{ color: "var(--color-text-heading)" }}>RAJVIRSINH </span>
+          <span style={{ color: "var(--color-primary)" }}>DABHI</span>
         </Link>
 
-        <a
-          href={Rajvirsinh_Dabhi_Resume}
-          download
-          style={{
-            padding: "8px 18px",
-            borderRadius: "30px",
-            background: "#598565",
-            color: "#ffffff",
-            fontSize: "13px",
-            fontWeight: 600,
-            textDecoration: "none",
-          }}
-        >
-          Resume
-        </a>
+      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+  <a
+    href={Rajvirsinh_Dabhi_Resume}
+    download
+    className="theme-btn-nav"
+    style={{
+      padding: "8px 18px",
+      borderRadius: "30px",
+      fontSize: "13px",
+    }}
+  >
+    Resume
+  </a>
+</div>
       </nav>
 
       {/* BLOG CONTENT */}
@@ -185,7 +185,7 @@ function BlogDetails() {
       >
         <h1
           style={{
-            color: "#ffffff",
+            color: "var(--color-text-heading)",
             fontWeight: 800,
             fontSize: "clamp(2rem,5vw,3.5rem)",
             lineHeight: "1.3",
@@ -197,7 +197,7 @@ function BlogDetails() {
 
         <p
           style={{
-            color: "#A6B0A8",
+            color: "var(--color-text-secondary)",
             marginBottom: "30px",
           }}
         >
@@ -216,7 +216,7 @@ function BlogDetails() {
 
         <div
           style={{
-            color: "#d1d5db",
+            color: "var(--color-text-secondary)",
             lineHeight: "2",
             fontSize: "17px",
             whiteSpace: "pre-line",
@@ -252,8 +252,8 @@ function BlogDetails() {
               padding: "14px 28px",
               borderRadius: "40px",
               background:
-                "linear-gradient(90deg, #598565, #8FBF9F)",
-              color: "#ffffff",
+                "var(--gradient-primary)",
+              color: "var(--color-text-heading)",
               textDecoration: "none",
               fontWeight: 600,
             }}
@@ -267,7 +267,7 @@ function BlogDetails() {
       <footer
         style={{
           marginTop: "80px",
-          borderTop: "1px solid rgba(255,255,255,0.08)",
+          borderTop: "1px solid var(--color-border)",
           padding: "40px 20px",
           position: "relative",
           zIndex: 1,
@@ -286,7 +286,7 @@ function BlogDetails() {
           <div>
             <p
               style={{
-                color: "#ffffff",
+                color: "var(--color-text-heading)",
                 marginBottom: "8px",
               }}
             >
@@ -295,7 +295,7 @@ function BlogDetails() {
 
             <p
               style={{
-                color: "#A6B0A8",
+                color: "var(--color-text-secondary)",
                 maxWidth: "500px",
                 lineHeight: "1.8",
               }}
@@ -319,7 +319,7 @@ function BlogDetails() {
               target="_blank"
               rel="noreferrer"
               style={{
-                color: "#598565",
+                color: "var(--color-primary)",
                 textDecoration: "none",
               }}
             >
@@ -331,7 +331,7 @@ function BlogDetails() {
               target="_blank"
               rel="noreferrer"
               style={{
-                color: "#598565",
+                color: "var(--color-primary)",
                 textDecoration: "none",
               }}
             >
@@ -340,6 +340,7 @@ function BlogDetails() {
           </div>
         </div>
       </footer>
+      <ThemeToggle variant="floating" />
     </div>
     </>
   );

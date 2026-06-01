@@ -29,6 +29,8 @@ import Github from "../Assets/images/github.png";
 import jwttoken from "../Assets/images/jwttoken.png";
 import { Link } from "react-router-dom";
 import blogs from "../data/blogs";
+import ThemeToggle from "../components/ThemeToggle/ThemeToggle";
+import { inputStyle } from "../theme/cardInteractions";
 // NO LONGER NEEDED if using Bootstrap's native ScrollSpy
 // import ScrollSpy from 'react-scrollspy';
 
@@ -150,16 +152,6 @@ const handleSubmit = async (e) => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const inputStyle = {
-    width: "100%",
-    padding: "14px 20px",
-    borderRadius: "12px",
-    border: "1px solid rgba(255,255,255,0.1)",
-    background: "rgba(255,255,255,0.04)",
-    color: "#fff",
-    fontSize: "14px",
-    outline: "none",
-  };
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -192,22 +184,22 @@ const handleSubmit = async (e) => {
     return (
       <div
         style={{
-          background: "rgba(255,255,255,0.03)",
+          background: "var(--color-card)",
           backdropFilter: "blur(12px)",
           borderRadius: "20px",
           overflow: "hidden",
-          border: "1px solid rgba(255,255,255,0.08)",
+          border: "1px solid var(--color-border)",
           transition: "all 0.4s ease",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = "translateY(-12px)";
-          e.currentTarget.style.boxShadow = "0 25px 50px rgba(89,133,101,0.25)";
-          e.currentTarget.style.borderColor = "#598565";
+          e.currentTarget.style.boxShadow = "var(--shadow-card-hover)";
+          e.currentTarget.style.borderColor = "var(--color-primary)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "translateY(0)";
           e.currentTarget.style.boxShadow = "none";
-          e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+          e.currentTarget.style.borderColor = "var(--color-border)";
         }}
       >
         {/* Image */}
@@ -232,9 +224,9 @@ const handleSubmit = async (e) => {
 
         {/* Content */}
         <div style={{ padding: "30px" }}>
-          <h4 style={{ color: "#fff", fontWeight: 700 }}>{title}</h4>
+          <h4 style={{ color: "var(--color-text-heading)", fontWeight: 700 }}>{title}</h4>
 
-          <p style={{ color: "#A6B0A8", lineHeight: "1.7" }}>{description}</p>
+          <p style={{ color: "var(--color-text-secondary)", lineHeight: "1.7" }}>{description}</p>
 
           <a
             href={link}
@@ -243,8 +235,8 @@ const handleSubmit = async (e) => {
             style={{
               padding: "14px 34px",
               borderRadius: "40px",
-              background: "linear-gradient(90deg, #598565, #8FBF9F)",
-              color: "#ffffff",
+              background: "var(--gradient-primary)",
+              color: "var(--color-text-heading)",
               fontWeight: 600,
               fontSize: "15px",
               letterSpacing: "0.5px",
@@ -257,17 +249,17 @@ const handleSubmit = async (e) => {
               lineHeight: "1",
               whiteSpace: "nowrap",
               transition: "all 0.3s ease",
-              boxShadow: "0 5px 15px rgba(89,133,101,0.25)",
+              boxShadow: "var(--shadow-brand)",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-3px)";
               e.currentTarget.style.boxShadow =
-                "0 12px 25px rgba(89,133,101,0.4)";
+                "var(--shadow-brand-hover)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow =
-                "0 5px 15px rgba(89,133,101,0.25)";
+                "var(--shadow-brand)";
             }}
           >
             View Live
@@ -280,11 +272,12 @@ const handleSubmit = async (e) => {
   return (
     <div
       id="content-wrapper"
-      style={{
+        style={{
         position: "relative",
         minHeight: "100vh",
-        background: "#0d1117",
+        background: "var(--color-background)",
         overflow: "hidden",
+        transition: "background-color 0.4s ease",
       }}
     >
       {/* GLOBAL BACKGROUND DESIGN */}
@@ -295,7 +288,7 @@ const handleSubmit = async (e) => {
           right: 0,
           width: "60%",
           height: "100vh",
-          background: "linear-gradient(135deg, #598565, #3D6B49)",
+          background: "var(--gradient-hero)",
           clipPath: "polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%)",
           opacity: 0.08,
           zIndex: 0,
@@ -309,7 +302,7 @@ const handleSubmit = async (e) => {
           top: "15px",
           left: "50%",
           transform: "translateX(-50%)",
-          background: "#0f1720",
+          background: "var(--color-navbar)",
           borderRadius: "50px",
           padding: "12px 25px",
           width: "90%",
@@ -317,9 +310,9 @@ const handleSubmit = async (e) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
+          boxShadow: "var(--shadow-navbar)",
           zIndex: 1000,
-          border: "1px solid rgba(255,255,255,0.06)",
+          border: "1px solid var(--color-border-subtle)",
         }}
       >
         {/* Logo */}
@@ -332,8 +325,8 @@ const handleSubmit = async (e) => {
             letterSpacing: "1px",
           }}
         >
-          <span style={{ color: "#ffffff" }}>RAJVIRSINH </span>
-          <span style={{ color: "#598565" }}>DABHI</span>
+          <span style={{ color: "var(--color-text-heading)" }}>RAJVIRSINH </span>
+          <span style={{ color: "var(--color-primary)" }}>DABHI</span>
         </a>
         {/* Desktop Links */}
         <div
@@ -358,7 +351,7 @@ const handleSubmit = async (e) => {
                   key={index}
                   href={`#${sectionId}`}
                   style={{
-                    color: activeSection === sectionId ? "#ffffff" : "#9BA3A7",
+                    color: activeSection === sectionId ? "var(--color-text-heading)" : "var(--color-text-muted)",
                     fontSize: "14px",
                     fontWeight: 500,
                     textDecoration: "none",
@@ -377,7 +370,7 @@ const handleSubmit = async (e) => {
                         bottom: 0,
                         width: "100%",
                         height: "2px",
-                        background: "linear-gradient(90deg, #598565, #8FBF9F)",
+                        background: "var(--gradient-primary)",
                         borderRadius: "2px",
                       }}
                     />
@@ -387,17 +380,14 @@ const handleSubmit = async (e) => {
             },
           )}
 
+          {/* <ThemeToggle /> */}
        <a
   href={Rajvirsinh_Dabhi_Resume}
   download="Rajvirsinh_Dabhi_Resume.pdf"
+  className="theme-btn-nav"
   style={{
     padding: "8px 18px",
     borderRadius: "30px",
-    background: "#598565",
-    color: "#ffffff",
-    fontSize: "13px",
-    fontWeight: 600,
-    textDecoration: "none",
   }}
 >
   Download Resume
@@ -411,7 +401,7 @@ const handleSubmit = async (e) => {
             style={{
               background: "none",
               border: "none",
-              color: "#fff",
+              color: "var(--color-text-heading)",
               fontSize: "22px",
             }}
           >
@@ -428,14 +418,14 @@ const handleSubmit = async (e) => {
             left: "50%",
             transform: "translateX(-50%)",
             width: "90%",
-            background: "#0f1720",
+            background: "var(--color-navbar)",
             borderRadius: "20px",
             padding: "25px",
             display: "flex",
             flexDirection: "column",
             gap: "20px",
             zIndex: 999,
-            border: "1px solid rgba(255,255,255,0.06)",
+            border: "1px solid var(--color-border-subtle)",
           }}
         >
           {["Home","Services", "Skills", "Work", "About", "Certifications","Blogs", "Contact"].map(
@@ -460,7 +450,7 @@ const handleSubmit = async (e) => {
   setMenuOpen(false);
 }}
                 style={{
-                  color: "#9BA3A7",
+                  color: "var(--color-text-muted)",
                   fontSize: "15px",
                   textDecoration: "none",
                 }}
@@ -470,21 +460,23 @@ const handleSubmit = async (e) => {
             ),
           )}
 
-          <a
-            href={Rajvirsinh_Dabhi_Resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              padding: "10px",
-              borderRadius: "25px",
-              background: "#598565",
-              color: "#fff",
-              textAlign: "center",
-              textDecoration: "none",
-            }}
-          >
-            Resume
-          </a>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            {/* <ThemeToggle /> */}
+            <a
+              href={Rajvirsinh_Dabhi_Resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="theme-btn-nav"
+              style={{
+                flex: 1,
+                padding: "10px",
+                borderRadius: "25px",
+                textAlign: "center",
+              }}
+            >
+              Resume
+            </a>
+          </div>
         </div>
       )}
       
@@ -508,7 +500,7 @@ const handleSubmit = async (e) => {
             right: 0,
             width: "60%",
             height: "100%",
-            background: "linear-gradient(135deg, #598565, #3D6B49)",
+            background: "var(--gradient-hero)",
             clipPath: "polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%)",
             opacity: 0.1,
           }}
@@ -525,7 +517,7 @@ const handleSubmit = async (e) => {
                 style={{
                   fontSize: "clamp(2rem, 8vw, 4rem)",
                   fontWeight: 900,
-                  color: "#ffffff",
+                  color: "var(--color-text-heading)",
                   lineHeight: "1.1",
                   animation: "slideUp 1s ease",
                 }}
@@ -534,7 +526,7 @@ const handleSubmit = async (e) => {
                 <span
                   style={{
                     display: "block",
-                    background: "linear-gradient(90deg, #598565, #8FBF9F)",
+                    background: "var(--gradient-primary)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                   }}
@@ -546,7 +538,7 @@ const handleSubmit = async (e) => {
               <p
                 style={{
                   marginTop: "25px",
-                  color: "#A6B0A8",
+                  color: "var(--color-text-secondary)",
                   fontSize: "1.05rem",
                   maxWidth: "600px",
                   animation: "slideUp 1.2s ease",
@@ -568,9 +560,9 @@ className="mt-4 d-flex flex-nowrap gap-2 justify-content-center justify-content-
                     style={{
                       padding: "6px 14px",
                       borderRadius: "20px",
-                      background: "rgba(89,133,101,0.1)",
-                      border: "1px solid rgba(89,133,101,0.4)",
-                      color: "#598565",
+                      background: "var(--color-tag-bg)",
+                      border: "1px solid var(--color-tag-border)",
+                      color: "var(--color-primary)",
                       fontSize: "13px",
                       fontWeight: 600,
                     }}
@@ -588,7 +580,7 @@ className="mt-4 d-flex flex-nowrap gap-2 justify-content-center justify-content-
       height: "clamp(200px, 70vw, 260px)",
       margin: "0 auto",
       borderRadius: "50%",
-      border: "3px dashed #598565",
+      border: "3px dashed var(--color-primary)",
       animation: "rotateRing 15s linear infinite",
       display: "flex",
       alignItems: "center",
@@ -617,8 +609,8 @@ className="mt-4 d-flex flex-nowrap gap-2 justify-content-center justify-content-
                   style={{
                     padding: "14px 36px",
                     borderRadius: "40px",
-                    background: "linear-gradient(90deg, #598565, #8FBF9F)",
-                    color: "#ffffff",
+                    background: "var(--gradient-primary)",
+                    color: "var(--color-text-heading)",
                     fontWeight: 600,
                     fontSize: "15px",
                     letterSpacing: "0.5px",
@@ -630,17 +622,17 @@ className="mt-4 d-flex flex-nowrap gap-2 justify-content-center justify-content-
                     lineHeight: "1",
                     whiteSpace: "nowrap",
                     transition: "all 0.3s ease",
-                    boxShadow: "0 6px 18px rgba(89,133,101,0.25)",
+                    boxShadow: "var(--shadow-brand)",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-3px)";
                     e.currentTarget.style.boxShadow =
-                      "0 12px 28px rgba(89,133,101,0.4)";
+                      "var(--shadow-brand-hover)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
                     e.currentTarget.style.boxShadow =
-                      "0 6px 18px rgba(89,133,101,0.25)";
+                      "var(--shadow-brand)";
                   }}
                 >
                   View Work
@@ -654,8 +646,8 @@ className="mt-4 d-flex flex-nowrap gap-2 justify-content-center justify-content-
                   style={{
                     padding: "14px 36px",
                     borderRadius: "40px",
-                    border: "2px solid #598565",
-                    color: "#598565",
+                    border: "2px solid var(--color-primary)",
+                    color: "var(--color-primary)",
                     fontWeight: 600,
                     textDecoration: "none",
                     textAlign: "center",
@@ -673,7 +665,7 @@ className="mt-4 d-flex flex-nowrap gap-2 justify-content-center justify-content-
                  width: "clamp(220px, 60vw, 300px)",
 height: "clamp(220px, 60vw, 300px)",
                   borderRadius: "50%",
-                  border: "3px dashed #598565",
+                  border: "3px dashed var(--color-primary)",
                   animation: "rotateRing 15s linear infinite",
                   display: "flex",
                   alignItems: "center",
@@ -742,7 +734,7 @@ height: "clamp(220px, 60vw, 300px)",
       >
         <h6
           style={{
-            color: "#598565",
+            color: "var(--color-primary)",
             letterSpacing: "2px",
             marginBottom: "15px",
             fontSize: "14px",
@@ -753,7 +745,7 @@ height: "clamp(220px, 60vw, 300px)",
 
         <h2
           style={{
-            color: "#ffffff",
+            color: "var(--color-text-heading)",
             fontWeight: 800,
             fontSize: "clamp(2rem, 5vw, 3rem)",
             marginBottom: "20px",
@@ -764,7 +756,7 @@ height: "clamp(220px, 60vw, 300px)",
 
         <p
           style={{
-            color: "#A6B0A8",
+            color: "var(--color-text-secondary)",
             lineHeight: "1.9",
             fontSize: "16px",
             maxWidth: "850px",
@@ -778,7 +770,7 @@ React Native, REST APIs, and full stack web development.
 
         <p
           style={{
-            color: "#A6B0A8",
+            color: "var(--color-text-secondary)",
             lineHeight: "1.9",
             fontSize: "16px",
             marginTop: "18px",
@@ -842,8 +834,8 @@ React Native, REST APIs, and full stack web development.
         >
           <div
             style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "var(--color-card)",
+              border: "1px solid var(--color-border)",
               borderRadius: "22px",
               padding: "35px",
               height: "100%",
@@ -854,22 +846,22 @@ React Native, REST APIs, and full stack web development.
               e.currentTarget.style.transform =
                 "translateY(-10px)";
               e.currentTarget.style.borderColor =
-                "#598565";
+                "var(--color-primary)";
               e.currentTarget.style.boxShadow =
-                "0 20px 50px rgba(89,133,101,0.25)";
+                "var(--shadow-card-hover)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform =
                 "translateY(0)";
               e.currentTarget.style.borderColor =
-                "rgba(255,255,255,0.08)";
+                "var(--color-border)";
               e.currentTarget.style.boxShadow =
                 "none";
             }}
           >
             <h4
               style={{
-                color: "#ffffff",
+                color: "var(--color-text-heading)",
                 fontWeight: 700,
                 marginBottom: "18px",
               }}
@@ -879,7 +871,7 @@ React Native, REST APIs, and full stack web development.
 
             <p
               style={{
-                color: "#A6B0A8",
+                color: "var(--color-text-secondary)",
                 lineHeight: "1.8",
                 fontSize: "15px",
               }}
@@ -903,7 +895,7 @@ React Native, REST APIs, and full stack web development.
 
     <h6
       style={{
-        color: "#598565",
+        color: "var(--color-primary)",
         letterSpacing: "2px",
         fontSize: "14px",
         marginBottom: "10px",
@@ -914,7 +906,7 @@ React Native, REST APIs, and full stack web development.
 
     <h1
       style={{
-        color: "#ffffff",
+        color: "var(--color-text-heading)",
         fontWeight: 800,
         marginBottom: "15px",
       }}
@@ -924,7 +916,7 @@ React Native, REST APIs, and full stack web development.
 
     <p
       style={{
-        color: "#A6B0A8",
+        color: "var(--color-text-secondary)",
         fontSize: "15px",
         lineHeight: "1.8",
         maxWidth: "600px",
@@ -1099,7 +1091,7 @@ React Native, REST APIs, and full stack web development.
                 style={{
                   width: "80px",
                   height: "4px",
-                  background: "linear-gradient(90deg, #598565, #8FBF9F)",
+                  background: "var(--gradient-primary)",
                   margin: "14px auto",
                   borderRadius: "20px",
                 }}
@@ -1140,9 +1132,9 @@ React Native, REST APIs, and full stack web development.
               >
                 <div
                   style={{
-                    background: "rgba(255,255,255,0.03)",
+                    background: "var(--color-card)",
                     backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    border: "1px solid var(--color-border)",
                     padding: "22px 18px",
                     borderRadius: "16px",
                     textAlign: "center",
@@ -1152,18 +1144,18 @@ React Native, REST APIs, and full stack web development.
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-8px)";
-                    e.currentTarget.style.borderColor = "#598565";
+                    e.currentTarget.style.borderColor = "var(--color-primary)";
                     e.currentTarget.style.boxShadow =
-                      "0 15px 35px rgba(89,133,101,0.25)";
+                      "var(--shadow-card-hover)";
                     e.currentTarget.style.background =
-                      "linear-gradient(135deg, rgba(89,133,101,0.08), rgba(89,133,101,0.02))";
+                      "var(--color-tech-card-hover-bg)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
                     e.currentTarget.style.borderColor =
-                      "rgba(255,255,255,0.08)";
+                      "var(--color-border)";
                     e.currentTarget.style.boxShadow = "none";
-                    e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                    e.currentTarget.style.background = "var(--color-card)";
                   }}
                 >
                   <span
@@ -1192,8 +1184,8 @@ React Native, REST APIs, and full stack web development.
           {/* Section Header */}
           <div className="row p-4">
             <div className="col-md-8 mx-auto text-center" data-aos="fade-up">
-              <h6 style={{ color: "#598565", letterSpacing: "2px" }}>WORK</h6>
-              <h1 style={{ color: "#fff", fontWeight: 800 }}>
+              <h6 style={{ color: "var(--color-primary)", letterSpacing: "2px" }}>WORK</h6>
+              <h1 style={{ color: "var(--color-text-heading)", fontWeight: 800 }}>
                 My Recent Projects
               </h1>
             </div>
@@ -1260,8 +1252,8 @@ React Native, REST APIs, and full stack web development.
             height: "180px",
             borderRadius: "50%",
             objectFit: "cover",
-            border: "5px solid #598565",
-            boxShadow: "0 20px 60px rgba(89,133,101,0.35)",
+            border: "5px solid var(--color-primary)",
+            boxShadow: "var(--shadow-brand)",
             transition: "all 0.4s ease",
           }}
           onMouseEnter={(e) => {
@@ -1491,7 +1483,7 @@ React Native, REST APIs, and full stack web development.
       >
         <h6
           style={{
-            color: "#598565",
+            color: "var(--color-primary)",
             letterSpacing: "2px",
             marginBottom: "15px",
             fontSize: "14px",
@@ -1502,7 +1494,7 @@ React Native, REST APIs, and full stack web development.
 
         <h2
           style={{
-            color: "#ffffff",
+            color: "var(--color-text-heading)",
             fontWeight: 800,
             fontSize: "clamp(2rem, 5vw, 3rem)",
             marginBottom: "20px",
@@ -1513,7 +1505,7 @@ React Native, REST APIs, and full stack web development.
 
         <p
           style={{
-            color: "#A6B0A8",
+            color: "var(--color-text-secondary)",
             lineHeight: "1.9",
             fontSize: "16px",
             maxWidth: "850px",
@@ -1540,8 +1532,8 @@ React Native, REST APIs, and full stack web development.
         >
           <div
             style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "var(--color-card)",
+              border: "1px solid var(--color-border)",
               borderRadius: "24px",
               overflow: "hidden",
               transition: "all 0.4s ease",
@@ -1552,15 +1544,15 @@ React Native, REST APIs, and full stack web development.
               e.currentTarget.style.transform =
                 "translateY(-10px)";
               e.currentTarget.style.borderColor =
-                "#598565";
+                "var(--color-primary)";
               e.currentTarget.style.boxShadow =
-                "0 20px 50px rgba(89,133,101,0.25)";
+                "var(--shadow-card-hover)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform =
                 "translateY(0)";
               e.currentTarget.style.borderColor =
-                "rgba(255,255,255,0.08)";
+                "var(--color-border)";
               e.currentTarget.style.boxShadow =
                 "none";
             }}
@@ -1598,8 +1590,8 @@ React Native, REST APIs, and full stack web development.
                   position: "absolute",
                   top: "15px",
                   left: "15px",
-                  background: "#598565",
-                  color: "#ffffff",
+                  background: "var(--color-primary)",
+                  color: "var(--color-text-heading)",
                   padding: "6px 14px",
                   borderRadius: "30px",
                   fontSize: "12px",
@@ -1619,7 +1611,7 @@ React Native, REST APIs, and full stack web development.
                   display: "flex",
                   gap: "12px",
                   fontSize: "13px",
-                  color: "#8FA39B",
+                  color: "var(--color-text-meta)",
                   marginBottom: "15px",
                 }}
               >
@@ -1631,7 +1623,7 @@ React Native, REST APIs, and full stack web development.
               {/* TITLE */}
               <h4
                 style={{
-                  color: "#ffffff",
+                  color: "var(--color-text-heading)",
                   fontWeight: 700,
                   lineHeight: "1.5",
                   marginBottom: "16px",
@@ -1644,7 +1636,7 @@ React Native, REST APIs, and full stack web development.
               {/* DESCRIPTION */}
               <p
                 style={{
-                  color: "#A6B0A8",
+                  color: "var(--color-text-secondary)",
                   lineHeight: "1.8",
                   fontSize: "15px",
                   marginBottom: "24px",
@@ -1657,7 +1649,7 @@ React Native, REST APIs, and full stack web development.
         <Link
   to={`/blog/${blog.slug}`}
   style={{
-    color: "#598565",
+    color: "var(--color-primary)",
     textDecoration: "none",
     fontWeight: 600
   }}
@@ -1689,7 +1681,7 @@ React Native, REST APIs, and full stack web development.
       <div className="col-12 col-md-8 mx-auto text-center">
         <h6
           style={{
-            color: "#598565",
+            color: "var(--color-primary)",
             letterSpacing: "2px",
             marginBottom: "10px",
             fontSize: "14px",
@@ -1700,7 +1692,7 @@ React Native, REST APIs, and full stack web development.
 
         <h1
           style={{
-            color: "#ffffff",
+            color: "var(--color-text-heading)",
             fontWeight: 800,
             marginBottom: "15px",
             fontSize: "clamp(26px, 5vw, 40px)",
@@ -1711,7 +1703,7 @@ React Native, REST APIs, and full stack web development.
 
         <p
           style={{
-            color: "#A6B0A8",
+            color: "var(--color-text-secondary)",
             lineHeight: "1.8",
             maxWidth: "650px",
             margin: "0 auto",
@@ -1767,27 +1759,27 @@ React Native, REST APIs, and full stack web development.
             key={index}
             onClick={() => item.link && window.open(item.link, "_blank")}
             style={{
-              background: "rgba(255,255,255,0.04)",
+              background: "var(--color-input-bg)",
               borderRadius: "16px",
               padding: "18px 20px",
               display: "flex",
               alignItems: "center",
               gap: "15px",
               marginBottom: "18px",
-              border: "1px solid rgba(255,255,255,0.08)",
+              border: "1px solid var(--color-border)",
               transition: "all 0.3s ease",
               cursor: item.link ? "pointer" : "default",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-5px)";
-              e.currentTarget.style.borderColor = "#598565";
+              e.currentTarget.style.borderColor = "var(--color-primary)";
               e.currentTarget.style.boxShadow =
-                "0 15px 40px rgba(0,0,0,0.4)";
+                "var(--shadow-md)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.borderColor =
-                "rgba(255,255,255,0.08)";
+                "var(--color-border)";
               e.currentTarget.style.boxShadow = "none";
             }}
           >
@@ -1798,12 +1790,12 @@ React Native, REST APIs, and full stack web development.
                 borderRadius: "12px",
                 background:
                   item.title === "WhatsApp"
-                    ? "linear-gradient(135deg, #25D366, #128C7E)"
-                    : "linear-gradient(135deg, #598565, #3D6B49)",
+                    ? "var(--gradient-whatsapp)"
+                    : "var(--gradient-hero)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#fff",
+                color: "var(--color-text-heading)",
                 fontSize: "16px",
                 flexShrink: 0,
               }}
@@ -1815,7 +1807,7 @@ React Native, REST APIs, and full stack web development.
               <div
                 style={{
                   fontSize: "11px",
-                  color: "#8FA39B",
+                  color: "var(--color-text-meta)",
                   letterSpacing: "1px",
                   textTransform: "uppercase",
                   marginBottom: "4px",
@@ -1828,7 +1820,7 @@ React Native, REST APIs, and full stack web development.
                 style={{
                   fontSize: "14px",
                   fontWeight: 600,
-                  color: "#ffffff",
+                  color: "var(--color-text-heading)",
                 }}
               >
                 {item.value}
@@ -1842,17 +1834,17 @@ React Native, REST APIs, and full stack web development.
       <div className="col-12 col-lg-7">
         <div
           style={{
-            background: "rgba(255,255,255,0.03)",
+            background: "var(--color-card)",
             backdropFilter: "blur(20px)",
             padding: "clamp(25px, 5vw, 50px)",
             borderRadius: "20px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            boxShadow: "0 25px 60px rgba(0,0,0,0.4)",
+            border: "1px solid var(--color-border)",
+            boxShadow: "var(--shadow-contact)",
           }}
         >
           <h4
             style={{
-              color: "#ffffff",
+              color: "var(--color-text-heading)",
               marginBottom: "25px",
               fontWeight: 700,
             }}
@@ -1932,11 +1924,11 @@ React Native, REST APIs, and full stack web development.
       style={{
         position: "absolute",
         width: "100%",
-        background: "#1a1f24",
+        background: "var(--color-dropdown-bg)",
         borderRadius: "12px",
         marginTop: "8px",
-        border: "1px solid rgba(255,255,255,0.08)",
-        boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
+              border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-md)",
         zIndex: 1000,
         overflow: "hidden",
       }}
@@ -1959,13 +1951,13 @@ React Native, REST APIs, and full stack web development.
           style={{
             padding: "12px 16px",
             cursor: "pointer",
-            color: "#ffffff",
+            color: "var(--color-text-heading)",
             fontSize: "14px",
             transition: "all 0.2s ease",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background =
-              "rgba(89,133,101,0.2)";
+              "var(--color-dropdown-option-hover)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "transparent";
@@ -2000,11 +1992,11 @@ React Native, REST APIs, and full stack web development.
     padding: "15px",
     borderRadius: "12px",
     border: "none",
-    background: "linear-gradient(90deg, #598565, #8FBF9F)",
-    color: "#ffffff",
+    background: "var(--gradient-primary)",
+    color: "var(--color-text-heading)",
     fontWeight: 600,
     fontSize: "15px",
-    boxShadow: "0 10px 25px rgba(89,133,101,0.35)",
+    boxShadow: "var(--shadow-brand)",
     opacity: loading ? 0.7 : 1,
     cursor: loading ? "not-allowed" : "pointer",
   }}
@@ -2034,7 +2026,7 @@ React Native, REST APIs, and full stack web development.
   <p
     style={{
       fontSize: "13px",
-      color: "#A6B0A8",
+      color: "var(--color-text-secondary)",
       lineHeight: "1.7",
       maxWidth: "500px",
     }}
@@ -2073,30 +2065,35 @@ React Native, REST APIs, and full stack web development.
         </div>
       </footer>
       {/* //FOOTER */}
-      <a
-        href={Rajvirsinh_Dabhi_Resume}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="floating-resume-btn"
-        title="Check Resume"
-      >
-        <i className="las la-file-alt me-2"></i> Check Resume
-      </a>
+   <>
+  <a
+    href={Rajvirsinh_Dabhi_Resume}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="floating-resume-btn"
+    title="Check Resume"
+  >
+    <i className="las la-file-alt me-2"></i> Check Resume
+  </a>
+
+  {/* Floating Theme Toggle */}
+<ThemeToggle variant="floating" />
+</>
 
       {/* CERTIFICATE MODAL */}
       {selectedCert && (
         <div
-          className="modal fade show d-block"
-          style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
+          className="modal fade show d-block theme-modal-overlay"
+          style={{ backgroundColor: "var(--color-overlay-heavy)" }}
           onClick={() => setSelectedCert(null)}
         >
           <div
             className="modal-dialog modal-dialog-centered modal-xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="modal-content bg-dark border-0 rounded-4">
+            <div className="modal-content theme-modal-content border-0 rounded-4">
               <div className="modal-header border-0">
-                <h5 className="modal-title text-white">Certificate Preview</h5>
+                <h5 className="modal-title">Certificate Preview</h5>
                 <button
                   type="button"
                   className="btn-close btn-close-white"
@@ -2128,7 +2125,7 @@ React Native, REST APIs, and full stack web development.
       left: 0,
       width: "100%",
       height: "100%",
-      background: "rgba(0,0,0,0.75)",
+      background: "var(--color-overlay)",
       backdropFilter: "blur(6px)",
       display: "flex",
       alignItems: "center",
@@ -2141,11 +2138,11 @@ React Native, REST APIs, and full stack web development.
       style={{
         width: "90%",
         maxWidth: "420px",
-        background: "#0f1720",
+        background: "var(--color-navbar)",
         borderRadius: "20px",
         padding: "35px 30px",
-        border: "1px solid rgba(255,255,255,0.08)",
-        boxShadow: "0 30px 80px rgba(0,0,0,0.6)",
+              border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
         textAlign: "center",
         animation: "slideUp 0.4s ease",
       }}
@@ -2161,13 +2158,13 @@ React Native, REST APIs, and full stack web development.
           alignItems: "center",
           justifyContent: "center",
           fontSize: "28px",
-          color: "#fff",
+          color: "var(--color-text-heading)",
           background:
             popup.type === "success"
-              ? "linear-gradient(135deg, #598565, #8FBF9F)"
+              ? "var(--gradient-success)"
               : popup.type === "warning"
-              ? "linear-gradient(135deg, #f59e0b, #fbbf24)"
-              : "linear-gradient(135deg, #ef4444, #f87171)",
+              ? "var(--gradient-warning)"
+              : "var(--gradient-error)",
         }}
       >
         {popup.type === "success"
@@ -2180,7 +2177,7 @@ React Native, REST APIs, and full stack web development.
       {/* TITLE */}
       <h4
         style={{
-          color: "#ffffff",
+          color: "var(--color-text-heading)",
           fontWeight: 700,
           marginBottom: "15px",
         }}
@@ -2195,7 +2192,7 @@ React Native, REST APIs, and full stack web development.
       {/* MESSAGE */}
       <p
         style={{
-          color: "#A6B0A8",
+          color: "var(--color-text-secondary)",
           fontSize: "14px",
           lineHeight: "1.7",
           marginBottom: "30px",
@@ -2217,9 +2214,9 @@ React Native, REST APIs, and full stack web development.
           style={{
             padding: "10px 18px",
             borderRadius: "10px",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid var(--color-input-border)",
             background: "transparent",
-            color: "#A6B0A8",
+            color: "var(--color-text-secondary)",
             cursor: "pointer",
             fontSize: "14px",
           }}
@@ -2233,8 +2230,8 @@ React Native, REST APIs, and full stack web development.
             padding: "10px 20px",
             borderRadius: "10px",
             border: "none",
-            background: "linear-gradient(90deg, #598565, #8FBF9F)",
-            color: "#ffffff",
+            background: "var(--gradient-primary)",
+            color: "var(--color-text-heading)",
             fontWeight: 600,
             cursor: "pointer",
             fontSize: "14px",

@@ -32,7 +32,7 @@ function BlogDetails() {
  return (
 <>
   <Helmet>
-    <title>{blog.title}</title>
+    <title>{blog.title} | Rajvirsinh Dabhi</title>
 
     <meta
       name="description"
@@ -67,14 +67,44 @@ function BlogDetails() {
       content={blog.description}
     />
 
-    <meta
-      property="og:image"
-      content={blog.image}
-    />
+  <meta
+  property="og:image"
+  content={blog.image}
+/>
 
-   <meta
+<meta
+  property="og:url"
+  content={`https://www.rajvirsinh.in/blog/${blog.slug}`}
+/>
+
+<meta
+  property="og:site_name"
+  content="Rajvirsinh Dabhi"
+/>
+
+<meta
   property="og:type"
   content="article"
+/>
+
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+/>
+
+<meta
+  name="twitter:title"
+  content={blog.title}
+/>
+
+<meta
+  name="twitter:description"
+  content={blog.description}
+/>
+
+<meta
+  name="twitter:image"
+  content={blog.image}
 />
 
 <script type="application/ld+json">
@@ -84,7 +114,11 @@ function BlogDetails() {
   headline: blog.title,
   description: blog.description,
   image: blog.image,
-  author: {
+
+datePublished: blog.date,
+dateModified: blog.date,
+
+author: {
     "@type": "Person",
     name: "Rajvirsinh Dabhi"
   },
@@ -96,6 +130,33 @@ function BlogDetails() {
     "@type": "WebPage",
     "@id": `https://www.rajvirsinh.in/blog/${blog.slug}`
   }
+})}
+</script>
+
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.rajvirsinh.in"
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://www.rajvirsinh.in/blog"
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: blog.title,
+      item: `https://www.rajvirsinh.in/blog/${blog.slug}`
+    }
+  ]
 })}
 </script>
 

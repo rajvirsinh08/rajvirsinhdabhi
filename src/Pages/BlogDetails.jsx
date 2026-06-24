@@ -54,7 +54,7 @@ function BlogDetails() {
 
     <link
       rel="canonical"
-      href={`https://rajvirsinhdabhi.vercel.app/blog/${blog.slug}`}
+      href={`https://www.rajvirsinh.in/blog/${blog.slug}`}
     />
 
     <meta
@@ -94,7 +94,7 @@ function BlogDetails() {
   },
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": `https://rajvirsinhdabhi.vercel.app/blog/${blog.slug}`
+    "@id": `https://www.rajvirsinh.in/blog/${blog.slug}`
   }
 })}
 </script>

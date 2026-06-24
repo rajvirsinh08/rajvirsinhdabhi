@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rajvirsinhdabhi.vercel.app/sitemap.xml
+Sitemap: https://www.rajvirsinh.in/sitemap.xml
